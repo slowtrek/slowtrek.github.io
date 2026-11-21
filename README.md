@@ -1,12 +1,35 @@
-# Lanzatrip
+# Slowtrek
 
-Carnet de randonnée itinérante, site statique Hugo (≥ 0.146, sans thème).
+Carnets de randonnée itinérante, publiés sur https://slowtrek.github.io/
+(sites statiques Hugo ≥ 0.146).
+
+## Organisation
+
+    index.html          page racine (redirige pour l'instant vers /lanzarote/)
+    themes/carnet/      gabarits, CSS, JS et archétype communs à tous les treks
+    lanzarote/          un trek = un site Hugo → https://slowtrek.github.io/lanzarote/
+      hugo.toml
+      content/
+        _index.md       introduction du trek
+        etapes/jour-01/ une étape : index.md + trace.gpx + photos
+
+## Créer un nouveau trek
+
+    mkdir -p mon-trek/content/etapes
+    cp lanzarote/hugo.toml mon-trek/          # puis adapter title, baseURL, timeZone…
+    cp lanzarote/content/etapes/_index.md mon-trek/content/etapes/
+    # écrire mon-trek/content/_index.md (introduction)
+
+Le workflow construit automatiquement chaque répertoire contenant un `hugo.toml`
+et le publie sous `/<répertoire>/`. Penser à remplacer la redirection de
+`index.html` par une vraie page d'accueil quand il y aura plusieurs treks.
 
 ## Ajouter une étape
 
-    hugo new content etapes/jour-03/index.md
+    cd lanzarote
+    hugo new content etapes/jour-04/index.md
 
-Puis, dans `content/etapes/jour-03/` :
+Puis, dans `content/etapes/jour-04/` :
 - éditer `index.md` : `weight` = numéro du jour, titre, date, récit ;
 - déposer la trace `trace.gpx` (un seul fichier .gpx par étape) ;
 - déposer les photos (.jpg/.png) : elles sont redimensionnées automatiquement.
@@ -14,14 +37,13 @@ Puis, dans `content/etapes/jour-03/` :
   vignette choisie avec `couverture: "photo.jpg"`.
 
 Distance, D+/D- et profil sont calculés à partir du GPX au moment du build
-(seuil anti-bruit réglable : `params.seuilDenivele` dans `hugo.toml`).
+(seuil anti-bruit : `params.seuilDenivele`, 3 m par défaut).
 
 ## Développement
 
-    hugo server
+    cd lanzarote && hugo server
 
 ## Déploiement
 
-Pousser sur la branche `main` d'un dépôt GitHub. Dans *Settings → Pages*,
-choisir **Source : GitHub Actions**. Le workflow `.github/workflows/hugo.yml`
-construit et publie le site.
+Chaque push sur `main` déclenche `.github/workflows/hugo.yml`, qui construit
+tous les treks et publie le site sur GitHub Pages.

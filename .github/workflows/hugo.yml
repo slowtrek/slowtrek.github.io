@@ -41,19 +41,33 @@ jobs:
       - name: Cache des images redimensionnées
         uses: actions/cache@v4
         with:
-          path: resources/_gen
-          key: hugo-gen-${{ hashFiles('content/**/*.jpg', 'content/**/*.jpeg', 'content/**/*.png', 'hugo.toml') }}
+          path: '*/resources/_gen'
+          key: hugo-gen-${{ hashFiles('*/content/**/*.jpg', '*/content/**/*.jpeg', '*/content/**/*.png', '*/hugo.toml') }}
           restore-keys: hugo-gen-
 
-      - name: Construire le site
+      # Chaque sous-répertoire contenant un hugo.toml est un trek,
+      # publié dans /<répertoire>/ ; index.html à la racine est copié tel quel.
+      - name: Construire les treks
         env:
           HUGO_ENVIRONMENT: production
-        run: hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
+          BASE_URL: ${{ steps.pages.outputs.base_url }}
+        run: |
+          mkdir -p _site
+          cp index.html _site/
+          for cfg in */hugo.toml; do
+            trek="$(dirname "$cfg")"
+            [ "$trek" = themes ] && continue
+            echo "::group::Trek $trek"
+            hugo --source "$trek" --gc --minify \
+              --baseURL "${BASE_URL}/${trek}/" \
+              --destination "$GITHUB_WORKSPACE/_site/$trek"
+            echo "::endgroup::"
+          done
 
       - name: Publier l'artefact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: ./public
+          path: ./_site
 
   deploy:
     needs: build

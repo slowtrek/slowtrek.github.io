@@ -1,5 +1,5 @@
 ---
-title: "Lanzatrip"
+title: "La traversée de Lanzarote à pied, d'Órzola à Playa Blanca."
 description: "La traversée de Lanzarote à pied, d'Órzola à Playa Blanca."
 ---
 

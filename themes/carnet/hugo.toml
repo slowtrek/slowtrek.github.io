@@ -1,0 +1,4 @@
+# Thème commun à tous les treks du dépôt (gabarits, CSS, JS, archétype).
+# Chaque trek l'utilise via `theme = "carnet"` et `themesDir = "../themes"`.
+[params]
+  seuilDenivele = 3

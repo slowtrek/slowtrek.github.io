@@ -1,5 +1,9 @@
 # baseURL est écrasé au déploiement par GitHub Actions (voir .github/workflows/hugo.yml)
-baseURL = "https://example.org/"
+baseURL = "https://slowtrek.github.io/lanzarote/"
+
+# Gabarits communs à tous les treks : ../themes/carnet
+theme = "carnet"
+themesDir = "../themes"
 locale = "fr-FR"
 defaultContentLanguage = "fr"
 title = "Lanzatrip"
