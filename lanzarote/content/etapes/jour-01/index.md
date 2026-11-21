@@ -6,12 +6,14 @@ arrivee: "Punta Mujeres"
 description: "Jardin Cactus, Cueva de los Verdes, Jameos del Agua"
 gpx: "cuervos_de_los_verdes_punta_mujeres.gpx"
 photos:
-  - fichier: "01-orzola.jpg"
-    description: "Órzola, au petit matin"
-  - fichier: "02-mirador.jpg"
-    description: "Vue depuis le Mirador del Río"
-  - fichier: "03-haria.jpg"
-    description: "La vallée des mille palmiers"
+  - fichier: "JardindeCactus.jpg"
+    description: "Le Jardin de Cactus."
+  - fichier: "CuevadeLosVerdes.jpg"
+    description: "Une des grandes cavités intérieures du tunnel de lave Cueva de Los Verdes."
+  - fichier: "cote.jpg"
+    description: "Sur le chemin longeant la côte entre Jameos del Agua et Punta Mujeres."
+  - fichier: "entree_CuevadeLosVerdes.jpg"
+    description: "Entrée du tunnel de lave Cueva de Los Verdes."
 pratique: |
   Nuit à Punta Mujeres, Casa piscina, avec dîner au Ctro. Socio Cultural El Marinero
 ---
