@@ -1,10 +1,11 @@
 {{ define "main" }}
 <section class="intro">
   <h1>{{ .Title }}</h1>
-  {{ .Content }}
+  {{ partial "typo.html" .Content }}
 </section>
 <section>
   <h2>Les étapes</h2>
   {{ with site.GetPage "/etapes" }}{{ partial "liste-etapes.html" .Pages.ByWeight }}{{ end }}
 </section>
+{{ partial "pratique.html" . }}
 {{ end }}

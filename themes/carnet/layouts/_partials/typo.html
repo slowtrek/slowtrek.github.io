@@ -1,0 +1,3 @@
+{{- /* Typographie française : espace insécable avant ! ? : ; (évite qu'ils passent seuls à la ligne). */ -}}
+{{- $html := replaceRE ` ([!?:;])` " $1" (string .) -}}
+{{- return ($html | safeHTML) -}}

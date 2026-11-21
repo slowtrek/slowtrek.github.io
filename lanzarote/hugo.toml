@@ -6,7 +6,7 @@ theme = "carnet"
 themesDir = "../themes"
 locale = "fr-FR"
 defaultContentLanguage = "fr"
-title = "Lanzarote"
+title = "Découvrir Lanzarote à pied en une semaine"
 timeZone = "Atlantic/Canary"
 disableKinds = ["taxonomy", "term"]
 

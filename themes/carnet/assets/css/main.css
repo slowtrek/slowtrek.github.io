@@ -40,8 +40,8 @@ h2 { font-size: 1.5rem; margin-top: 2.5rem; }
 
 /* ---------- En-tête / pied ---------- */
 .site-header { border-bottom: 1px solid var(--trait); background: var(--surface); }
-.site-header .wrap { display: flex; align-items: center; justify-content: space-between; min-height: 3.5rem; }
-.marque { font: 600 1.3rem Georgia, serif; color: var(--texte); text-decoration: none; }
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 3.5rem; padding-block: 0.6rem; }
+.marque { font: 600 1.3rem/1.25 Georgia, serif; color: var(--texte); text-decoration: none; }
 .site-header nav a { color: var(--doux); text-decoration: none; font-weight: 500; }
 .site-header nav a:hover { color: var(--accent); }
 main.wrap { padding-block: 2rem 4rem; }
@@ -132,10 +132,12 @@ main.wrap { padding-block: 2rem 4rem; }
 }
 .pratique h2 { margin: 0 0 0.4rem; font-size: 1.1rem; }
 .pratique p { margin: 0.3rem 0; }
+.pratique ul { margin: 0.4rem 0; padding-left: 1.2rem; }
+.pratique li { margin: 0.5rem 0; }
 
 /* ---------- Justification (écrans assez larges seulement) ---------- */
 @media (min-width: 700px) {
-  .intro p, .recit p, .pratique p {
+  .intro p, .recit p, .pratique p, .pratique li {
     text-align: justify;
     hyphens: auto;
     -webkit-hyphens: auto;

@@ -23,14 +23,9 @@
   <script type="application/json" id="trace-data">{{ dict "lat" .lat "lon" .lon "ele" .ele "d" .d | jsonify | safeJS }}</script>
   {{- end }}
 
-  <div class="recit">{{ .Content }}</div>
+  <div class="recit">{{ partial "typo.html" .Content }}</div>
 
-  {{- with .Params.pratique }}
-  <aside class="pratique">
-    <h2>Infos pratiques</h2>
-    {{ . | markdownify }}
-  </aside>
-  {{- end }}
+  {{ partial "pratique.html" . }}
 
   {{- with .Resources.ByType "image" }}
   <section class="galerie">

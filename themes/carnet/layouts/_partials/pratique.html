@@ -1,0 +1,7 @@
+{{- /* Encadré « Infos pratiques » (param « pratique » en Markdown). Contexte : page. */ -}}
+{{- with .Params.pratique }}
+<aside class="pratique">
+  <h2>Infos pratiques</h2>
+  {{ partial "typo.html" (. | markdownify) }}
+</aside>
+{{- end }}
