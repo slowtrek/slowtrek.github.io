@@ -35,9 +35,9 @@
       {{- range $pts -}}
         {{- $lat := float (index . "-lat") -}}
         {{- $lon := float (index . "-lon") -}}
-        {{- $ele := float (.ele | default $ref) -}}
+        {{- $ele := float (.ele | default $ref) -}}{{- $ref = $ele -}}
         {{- if $first -}}
-          {{- $ref = $ele -}}{{- $first = false -}}
+          {{- $first = false -}}
         {{- else -}}
           {{- /* distance haversine depuis le point précédent */ -}}
           {{- $p1 := math.ToRadians $plat -}}{{- $p2 := math.ToRadians $lat -}}
@@ -45,13 +45,6 @@
           {{- $dl := math.ToRadians (sub $lon $plon) -}}
           {{- $a := add (math.Pow (math.Sin (div $dp 2)) 2) (mul (math.Cos $p1) (math.Cos $p2) (math.Pow (math.Sin (div $dl 2)) 2)) -}}
           {{- $dist = add $dist (mul 2 $R (math.Atan2 (math.Sqrt $a) (math.Sqrt (sub 1 $a)))) -}}
-          {{- /* dénivelé avec hystérésis pour filtrer le bruit */ -}}
-          {{- $diff := sub $ele $ref -}}
-          {{- if ge $diff $seuil -}}
-            {{- $up = add $up $diff -}}{{- $ref = $ele -}}
-          {{- else if le $diff (mul -1 $seuil) -}}
-            {{- $down = sub $down $diff -}}{{- $ref = $ele -}}
-          {{- end -}}
         {{- end -}}
         {{- $min = math.Min $min $ele -}}{{- $max = math.Max $max $ele -}}
         {{- $plat = $lat -}}{{- $plon = $lon -}}
@@ -59,6 +52,38 @@
         {{- $lons = $lons | append (div (math.Round (mul $lon 100000)) 100000) -}}
         {{- $eles = $eles | append (div (math.Round (mul $ele 10)) 10) -}}
         {{- $ds = $ds | append (math.Round $dist) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- /*
+    Dénivelé. Les altitudes des GPX (relief numérique ou GPS) oscillent
+    d'un point à l'autre, surtout le long des falaises : sommer chaque
+    variation surestime fortement le D+/D-. On lisse donc les altitudes
+    (moyenne glissante sur environ « lissageDenivele » mètres), puis on
+    ignore les variations inférieures à « seuilDenivele » mètres.
+  */ -}}
+  {{- $n := len $eles -}}
+  {{- if gt $n 1 -}}
+    {{- $lissage := site.Params.lissageDenivele | default 150 -}}
+    {{- $k := int (math.Max 0 (math.Round (div (div $lissage 2.0) (div $dist (sub $n 1))))) -}}
+    {{- /* sommes cumulées pour une moyenne glissante en un seul passage */ -}}
+    {{- $cum := slice 0.0 -}}{{- $acc := 0.0 -}}
+    {{- range $eles }}{{ $acc = add $acc . }}{{ $cum = $cum | append $acc }}{{ end -}}
+    {{- $ref = -1.0 -}}
+    {{- range $i, $_ := $eles -}}
+      {{- $a := int (math.Max 0 (sub $i $k)) -}}
+      {{- $b := int (math.Min $n (add $i $k 1)) -}}
+      {{- $lisse := div (sub (index $cum $b) (index $cum $a)) (sub $b $a) -}}
+      {{- if eq $i 0 -}}
+        {{- $ref = $lisse -}}
+      {{- else -}}
+        {{- $diff := sub $lisse $ref -}}
+        {{- if ge $diff $seuil -}}
+          {{- $up = add $up $diff -}}{{- $ref = $lisse -}}
+        {{- else if le $diff (mul -1 $seuil) -}}
+          {{- $down = sub $down $diff -}}{{- $ref = $lisse -}}
+        {{- end -}}
       {{- end -}}
     {{- end -}}
   {{- end -}}

@@ -2,3 +2,4 @@
 # Chaque trek l'utilise via `theme = "carnet"` et `themesDir = "../themes"`.
 [params]
   seuilDenivele = 3
+  lissageDenivele = 150

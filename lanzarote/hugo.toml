@@ -15,6 +15,8 @@ disableKinds = ["taxonomy", "term"]
   description = "Carnet de randonnée itinérante : la traversée de Lanzarote à pied."
   # Seuil (m) en dessous duquel les variations d'altitude sont ignorées (bruit GPS)
   seuilDenivele = 3
+  # Largeur (m) de la moyenne glissante appliquée aux altitudes avant le calcul du D+/D-
+  lissageDenivele = 150
 
 [imaging]
   quality = 80
