@@ -6,10 +6,12 @@ arrivee: "Tiagua"
 description: "Musée Lagomar, Playa de Famara"
 gpx: "haria_teguise_tiagua.gpx"
 photos:
-  - fichier: "01-chache.jpg"
-    description: "Vers les Peñas del Chache"
-  - fichier: "02-teguise.jpg"
-    description: "Teguise, l'ancienne capitale"
+  - fichier: "CheminFalaise.jpg"
+    description: "Sur le chemin en haut des falaises au-dessus d’Haría, avec vue sur les volcans du parc."
+  - fichier: "Falaises_vue_arriere.jpg"
+    description: "Sur le chemin, vue derrière nous sur les falaises avec en arrière-plan l’île de La Graciosa."
+  - fichier: "Lagomar.jpg"
+    description: "Musée Lagomar, Nazaret, Las Palmas."
 pratique: |
   Déjeuner à Teguise au restaurant San Miguel, nuit à Tiagua, Myplace, avec dîner à la Pizzeria Casa Morelino (les meilleures pizzas de l’île prises à emporter car restaurant complet, pensez à réserver si vous voulez les déguster sur place)
 ---
