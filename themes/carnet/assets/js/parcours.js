@@ -27,7 +27,7 @@
       // repère sans trace décalé au-dessus du point, pour ne pas masquer une autre pastille
       iconAnchor: sansTrace ? [13, 34] : [13, 13],
     }),
-    title: `Jour ${j.jour} · ${j.titre}${sansTrace ? ' (sans trace GPX)' : ''}`,
+    title: `Jour ${j.jour} · ${j.titre}${sansTrace ? ' (sans randonnée)' : ''}`,
     keyboard: true,
   }).on('click', () => { location.href = j.url; }).addTo(map);
 
