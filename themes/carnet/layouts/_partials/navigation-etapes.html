@@ -1,0 +1,23 @@
+{{- /*
+  Liens jour précédent / suivant, d'après weight.
+  Usage : {{ partial "navigation-etapes.html" (dict "page" . "position" "haut") }}
+*/ -}}
+{{- $page := .page -}}
+{{- $etapes := $page.CurrentSection.Pages.ByWeight }}
+{{- $prec := false }}{{ $suiv := false }}
+{{- range $i, $p := $etapes }}
+  {{- if eq $p.RelPermalink $page.RelPermalink }}
+    {{- if gt $i 0 }}{{ $prec = index $etapes (sub $i 1) }}{{ end }}
+    {{- if lt (add $i 1) (len $etapes) }}{{ $suiv = index $etapes (add $i 1) }}{{ end }}
+  {{- end }}
+{{- end }}
+{{- if or $prec $suiv }}
+<nav class="pagination pagination-{{ .position }}" aria-label="Étapes ({{ .position }} de page)">
+  {{- with $prec }}
+  <a class="prec" href="{{ .RelPermalink }}"><span>← Jour {{ .Weight }}</span><b class="titre">{{ .Title }}</b></a>
+  {{- else }}<span></span>{{ end }}
+  {{- with $suiv }}
+  <a class="suiv" href="{{ .RelPermalink }}"><span>Jour {{ .Weight }} →</span><b class="titre">{{ .Title }}</b></a>
+  {{- end }}
+</nav>
+{{- end }}

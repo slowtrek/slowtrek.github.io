@@ -66,6 +66,7 @@ main.wrap { padding-block: 2rem 4rem; }
 .mini-stats { margin: 0; color: var(--doux); font-size: 0.9rem; font-variant-numeric: tabular-nums; }
 
 /* ---------- Étape ---------- */
+.etape-entete .jour { font-size: 1.15rem; letter-spacing: 0.08em; }
 .chapo { font-size: 1.15rem; color: var(--doux); margin-top: 0; }
 .stats {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr)); gap: 1px;
@@ -124,6 +125,8 @@ main.wrap { padding-block: 2rem 4rem; }
 .pagination a span { display: block; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); }
 .pagination .suiv { text-align: right; margin-left: auto; }
 .pagination a:hover { color: var(--accent); }
+.pagination-haut { margin: 0 0 1.5rem; padding: 0 0 0.9rem; border-top: 0; border-bottom: 1px solid var(--trait); font-size: 0.9rem; }
+.pagination-haut a span { font-size: 0.72rem; }
 
 /* ---------- Infos pratiques ---------- */
 .pratique {
@@ -144,3 +147,5 @@ main.wrap { padding-block: 2rem 4rem; }
     hyphenate-limit-chars: 7 3 3;   /* pas de coupure dans les mots courts */
   }
 }
+.pagination .titre { font-weight: inherit; }
+.pagination-haut .titre { display: none; }

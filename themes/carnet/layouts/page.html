@@ -9,6 +9,7 @@
 {{- if not .Weight }}{{ warnf "%s : pas de « weight » (numéro du jour) dans le front matter" .File.Path }}{{ end }}
 {{- $s := partialCached "gpx-stats.html" . .RelPermalink }}
 <article class="etape">
+  {{ partial "navigation-etapes.html" (dict "page" . "position" "haut") }}
   <header class="etape-entete">
     <p class="jour">Jour {{ .Weight }}{{ if not .Date.IsZero }} · <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format ":date_full" }}</time>{{ end }}</p>
     <h1>{{ .Title }}</h1>
@@ -55,23 +56,7 @@
   </dialog>
   {{- end }}
 
-  {{- /* Jour précédent / suivant, d'après weight */ -}}
-  {{- $etapes := .CurrentSection.Pages.ByWeight }}
-  {{- $prec := false }}{{ $suiv := false }}
-  {{- range $i, $p := $etapes }}
-    {{- if eq $p.RelPermalink $.RelPermalink }}
-      {{- if gt $i 0 }}{{ $prec = index $etapes (sub $i 1) }}{{ end }}
-      {{- if lt (add $i 1) (len $etapes) }}{{ $suiv = index $etapes (add $i 1) }}{{ end }}
-    {{- end }}
-  {{- end }}
-  <nav class="pagination" aria-label="Étapes">
-    {{- with $prec }}
-    <a class="prec" href="{{ .RelPermalink }}"><span>← Jour {{ .Weight }}</span>{{ .Title }}</a>
-    {{- else }}<span></span>{{ end }}
-    {{- with $suiv }}
-    <a class="suiv" href="{{ .RelPermalink }}"><span>Jour {{ .Weight }} →</span>{{ .Title }}</a>
-    {{- end }}
-  </nav>
+  {{ partial "navigation-etapes.html" (dict "page" . "position" "bas") }}
 </article>
 {{ end }}
 
