@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="{{ site.Language.Locale | default "fr" }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
+  {{- with .Description | default site.Params.description }}
+  <meta name="description" content="{{ . }}">
+  {{- end }}
+  {{- $css := resources.Get "css/main.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+  {{- block "head" . }}{{ end }}
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="marque" href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a>
+      <nav>{{ with site.GetPage "/etapes" }}<a href="{{ .RelPermalink }}">Étapes</a>{{ end }}</nav>
+    </div>
+  </header>
+  <main class="wrap">
+    {{- block "main" . }}{{ end }}
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">{{ site.Title }} · carnet de randonnée</div>
+  </footer>
+  {{- block "scripts" . }}{{ end }}
+</body>
+</html>

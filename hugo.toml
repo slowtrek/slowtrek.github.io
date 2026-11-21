@@ -1,0 +1,21 @@
+# baseURL est écrasé au déploiement par GitHub Actions (voir .github/workflows/hugo.yml)
+baseURL = "https://example.org/"
+locale = "fr-FR"
+defaultContentLanguage = "fr"
+title = "Lanzatrip"
+timeZone = "Atlantic/Canary"
+disableKinds = ["taxonomy", "term"]
+
+[params]
+  description = "Carnet de randonnée itinérante : la traversée de Lanzarote à pied."
+  # Seuil (m) en dessous duquel les variations d'altitude sont ignorées (bruit GPS)
+  seuilDenivele = 3
+
+[imaging]
+  quality = 80
+  resampleFilter = "Lanczos"
+  anchor = "Smart"
+
+[outputs]
+  home = ["html"]
+  section = ["html"]

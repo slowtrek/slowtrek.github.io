@@ -1,0 +1,7 @@
+{{- /* Chiffres clés d'une étape. Contexte : résultat de gpx-stats. */ -}}
+<dl class="stats">
+  <div><dt>Distance</dt><dd>{{ lang.FormatNumber 1 (div .distance 1000) }} km</dd></div>
+  <div><dt>D+</dt><dd>{{ lang.FormatNumber 0 .up }} m</dd></div>
+  <div><dt>D−</dt><dd>{{ lang.FormatNumber 0 .down }} m</dd></div>
+  <div><dt>Alt. max</dt><dd>{{ lang.FormatNumber 0 .max }} m</dd></div>
+</dl>

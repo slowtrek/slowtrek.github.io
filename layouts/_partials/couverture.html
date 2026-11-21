@@ -1,0 +1,5 @@
+{{- /* Renvoie l'image de vignette d'une étape : param « couverture », sinon la première photo. */ -}}
+{{- $img := false -}}
+{{- with .Params.couverture }}{{ $img = $.Resources.GetMatch . }}{{ end -}}
+{{- if not $img }}{{ $img = index (sort (.Resources.ByType "image") "Name") 0 }}{{ end -}}
+{{- return $img -}}

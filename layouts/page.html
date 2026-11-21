@@ -1,0 +1,83 @@
+{{ define "head" }}
+{{- if .Resources.GetMatch "*.gpx" }}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+{{- end }}
+{{ end }}
+
+{{ define "main" }}
+{{- if not .Weight }}{{ warnf "%s : pas de « weight » (numéro du jour) dans le front matter" .File.Path }}{{ end }}
+{{- $s := partialCached "gpx-stats.html" . .RelPermalink }}
+<article class="etape">
+  <header class="etape-entete">
+    <p class="jour">Jour {{ .Weight }} · <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format ":date_full" }}</time></p>
+    <h1>{{ .Title }}</h1>
+    {{- with .Description }}<p class="chapo">{{ . }}</p>{{ end }}
+  </header>
+
+  {{- with $s }}
+  {{ partial "stats.html" . }}
+  <div id="carte" class="carte" role="region" aria-label="Carte du tracé"></div>
+  {{ partial "profil.html" . }}
+  <p class="telecharger"><a href="{{ .gpx.RelPermalink }}" download>Télécharger la trace GPX</a></p>
+  <script type="application/json" id="trace-data">{{ dict "lat" .lat "lon" .lon "ele" .ele "d" .d | jsonify | safeJS }}</script>
+  {{- end }}
+
+  <div class="recit">{{ .Content }}</div>
+
+  {{- with .Resources.ByType "image" }}
+  <section class="galerie">
+    <h2>Photos</h2>
+    <div class="grille-photos">
+      {{- range sort . "Name" }}
+      {{- $img := . | images.Filter images.AutoOrient }}
+      {{- $vignette := $img.Fill "600x450 webp q75" }}
+      {{- $grande := $img.Fit "1800x1800 webp q82" }}
+      {{- $legende := cond (eq .Title .Name) "" .Title }}
+      <figure>
+        <a href="{{ $grande.RelPermalink }}" data-legende="{{ $legende }}">
+          <img src="{{ $vignette.RelPermalink }}" width="{{ $vignette.Width }}" height="{{ $vignette.Height }}"
+               alt="{{ $legende }}" loading="lazy">
+        </a>
+        {{- with $legende }}<figcaption>{{ . }}</figcaption>{{ end }}
+      </figure>
+      {{- end }}
+    </div>
+  </section>
+  <dialog id="visionneuse" class="visionneuse">
+    <img alt="">
+    <p class="legende"></p>
+    <button type="button" class="fermer" aria-label="Fermer">×</button>
+    <button type="button" class="prec" aria-label="Photo précédente">‹</button>
+    <button type="button" class="suiv" aria-label="Photo suivante">›</button>
+  </dialog>
+  {{- end }}
+
+  {{- /* Jour précédent / suivant, d'après weight */ -}}
+  {{- $etapes := .CurrentSection.Pages.ByWeight }}
+  {{- $prec := false }}{{ $suiv := false }}
+  {{- range $i, $p := $etapes }}
+    {{- if eq $p.RelPermalink $.RelPermalink }}
+      {{- if gt $i 0 }}{{ $prec = index $etapes (sub $i 1) }}{{ end }}
+      {{- if lt (add $i 1) (len $etapes) }}{{ $suiv = index $etapes (add $i 1) }}{{ end }}
+    {{- end }}
+  {{- end }}
+  <nav class="pagination" aria-label="Étapes">
+    {{- with $prec }}
+    <a class="prec" href="{{ .RelPermalink }}"><span>← Jour {{ .Weight }}</span>{{ .Title }}</a>
+    {{- else }}<span></span>{{ end }}
+    {{- with $suiv }}
+    <a class="suiv" href="{{ .RelPermalink }}"><span>Jour {{ .Weight }} →</span>{{ .Title }}</a>
+    {{- end }}
+  </nav>
+</article>
+{{ end }}
+
+{{ define "scripts" }}
+{{- if .Resources.GetMatch "*.gpx" }}
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+{{- end }}
+{{- $js := resources.Get "js/etape.js" | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+{{ end }}

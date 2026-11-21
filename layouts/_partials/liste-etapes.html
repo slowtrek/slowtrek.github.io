@@ -1,0 +1,38 @@
+{{- /* Liste des étapes + totaux. Contexte : collection de pages d'étapes. */ -}}
+{{- $dist := 0.0 }}{{ $up := 0.0 }}{{ $down := 0.0 -}}
+{{- range . }}{{ with partialCached "gpx-stats.html" . .RelPermalink -}}
+  {{- $dist = add $dist .distance }}{{ $up = add $up .up }}{{ $down = add $down .down -}}
+{{- end }}{{ end -}}
+
+{{- with . }}
+<p class="totaux">
+  <strong>{{ len . }}</strong> étape{{ if gt (len .) 1 }}s{{ end }} ·
+  <strong>{{ lang.FormatNumber 1 (div $dist 1000) }}</strong> km ·
+  <strong>{{ lang.FormatNumber 0 $up }}</strong> m D+ ·
+  <strong>{{ lang.FormatNumber 0 $down }}</strong> m D−
+</p>
+<ol class="etapes">
+  {{- range . }}
+  {{- $s := partialCached "gpx-stats.html" . .RelPermalink }}
+  <li>
+    <a class="carte-etape" href="{{ .RelPermalink }}">
+      {{- with partial "couverture.html" . }}
+      {{- $v := (. | images.Filter images.AutoOrient).Fill "640x400 webp q75" }}
+      <img src="{{ $v.RelPermalink }}" width="{{ $v.Width }}" height="{{ $v.Height }}" alt="" loading="lazy">
+      {{- else }}
+      <div class="sans-photo"></div>
+      {{- end }}
+      <div class="carte-texte">
+        <p class="jour">Jour {{ .Weight }} · <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format ":date_medium" }}</time></p>
+        <h3>{{ .Title }}</h3>
+        {{- with $s }}
+        <p class="mini-stats">{{ lang.FormatNumber 1 (div .distance 1000) }} km · ↗ {{ lang.FormatNumber 0 .up }} m · ↘ {{ lang.FormatNumber 0 .down }} m</p>
+        {{- end }}
+      </div>
+    </a>
+  </li>
+  {{- end }}
+</ol>
+{{- else }}
+<p>Aucune étape pour l'instant.</p>
+{{- end }}
