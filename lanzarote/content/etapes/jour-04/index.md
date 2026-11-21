@@ -4,6 +4,8 @@ weight: 4
 depart: "Tiagua"
 arrivee: "Yaiza"
 description: "Caldera Blanca, Caldera de Los Cuervos, Bodegas Stratvs et Rubicon"
+gpx: ""
+photos: []
 pratique: |
   Déjeuner à la Geria, la Bodega Stratvs, nuit à Yaiza, hôtel La Casona de Yaiza, avec dîner au restaurant de l’hôtel (cadre sympa et bonne cuisine)
 ---

@@ -4,6 +4,8 @@ weight: 7
 depart: "Playa Blanca"
 arrivee: "Arrecife"
 description: "Playa de Papagayo, Fundación César Manrique de Tahiche, Charco de San Ginés (quartier Arrecife)"
+gpx: ""
+photos: []
 pratique: |
   Nuit à Arrecife, hôtel Lancelot, avec dîner à La Miñoca Cafe.
 ---

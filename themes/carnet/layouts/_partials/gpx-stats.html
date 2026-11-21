@@ -1,11 +1,19 @@
 {{- /*
-  Lit le premier fichier .gpx du page bundle et calcule, au build :
+  Lit le fichier GPX de l'étape (param « gpx » du front matter, sinon le
+  premier .gpx du dossier) et calcule, au build :
   distance (m), D+, D- (m), altitudes min/max et les tableaux de points.
   Usage : {{ $s := partialCached "gpx-stats.html" . .RelPermalink }}
   Renvoie false si l'étape n'a pas de GPX.
 */ -}}
 {{- $result := false -}}
-{{- with .Resources.GetMatch "*.gpx" -}}
+{{- $fichier := false -}}
+{{- with .Params.gpx -}}
+  {{- $fichier = $.Resources.Get . -}}
+  {{- if not $fichier }}{{ warnf "%s : fichier GPX « %s » introuvable dans le dossier de l'étape" $.File.Path . }}{{ end -}}
+{{- else -}}
+  {{- $fichier = .Resources.GetMatch "*.gpx" -}}
+{{- end -}}
+{{- with $fichier -}}
   {{- $gpx := transform.Unmarshal (dict "format" "xml") .Content -}}
   {{- $seuil := site.Params.seuilDenivele | default 3 -}}
   {{- $R := 6371000.0 -}}

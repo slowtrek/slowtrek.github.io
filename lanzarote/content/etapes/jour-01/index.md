@@ -4,6 +4,14 @@ weight: 1
 depart: "Aéroport"
 arrivee: "Punta Mujeres"
 description: "Jardin Cactus, Cueva de los Verdes, Jameos del Agua"
+gpx: "trace.gpx"
+photos:
+  - fichier: "01-orzola.jpg"
+    description: "Órzola, au petit matin"
+  - fichier: "02-mirador.jpg"
+    description: "Vue depuis le Mirador del Río"
+  - fichier: "03-haria.jpg"
+    description: "La vallée des mille palmiers"
 pratique: |
   Nuit à Punta Mujeres, Casa piscina, avec dîner au Ctro. Socio Cultural El Marinero
 ---

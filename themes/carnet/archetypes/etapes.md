@@ -7,10 +7,11 @@ arrivee: ""
 description: ""    # sites du jour, affichés sous le titre
 pratique: |
   Nuit à …, dîner à …
-# couverture: "photo.jpg"   # photo de vignette (sinon : la première photo)
-# resources:
-#   - src: "photo.jpg"
-#     title: "Légende de la photo"
+gpx: "trace.gpx"   # fichier GPX déposé dans le dossier de l'étape
+photos:            # dans l'ordre d'affichage de la galerie
+  - fichier: "photo-1.jpg"
+    description: "Texte affiché sous la photo"
+# couverture: "photo-1.jpg"   # vignette sur l'accueil (sinon : la première photo)
 ---
 
 Récit de la journée…

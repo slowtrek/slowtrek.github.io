@@ -1,0 +1,24 @@
+{{- /*
+  Liste des photos d'une étape, sous forme de dicts { image, description }.
+  Front matter :
+    photos:
+      - fichier: "photo.jpg"
+        description: "Texte affiché sous la photo"
+  L'ordre de la liste est celui de la galerie. Sans « photos », toutes les
+  images du dossier sont prises par ordre de nom, sans description.
+*/ -}}
+{{- $photos := slice -}}
+{{- with .Params.photos -}}
+  {{- range $p := . -}}
+    {{- with $.Resources.Get $p.fichier -}}
+      {{- $photos = $photos | append (dict "image" . "description" ($p.description | default "")) -}}
+    {{- else -}}
+      {{- warnf "%s : photo « %s » introuvable dans le dossier de l'étape" $.File.Path $p.fichier -}}
+    {{- end -}}
+  {{- end -}}
+{{- else -}}
+  {{- range sort (.Resources.ByType "image") "Name" -}}
+    {{- $photos = $photos | append (dict "image" . "description" "") -}}
+  {{- end -}}
+{{- end -}}
+{{- return $photos -}}

@@ -4,6 +4,14 @@ weight: 2
 depart: "Punta Mujeres"
 arrivee: "Haria"
 description: "Mirador del Rio, Casa Museo de César Manrique"
+gpx: "orozola-haria.gpx"
+photos:
+  - fichier: "01-orzola.jpg"
+    description: "Órzola, au petit matin"
+  - fichier: "02-mirador.jpg"
+    description: "Vue depuis le Mirador del Río"
+  - fichier: "03-haria.jpg"
+    description: "La vallée des mille palmiers"
 pratique: |
   Nuit à Haria, Casa Origenes, avec verre au Bar Folelé (après la visite du musée) et dîner à La Puerta Verde (spécialités: potaje de lentejas et queso de cabra con mermelada de mango)
 ---

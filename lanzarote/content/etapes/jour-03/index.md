@@ -4,6 +4,12 @@ weight: 3
 depart: "Haria"
 arrivee: "Tiagua"
 description: "Musée Lagomar, Playa de Famara"
+gpx: "trace.gpx"
+photos:
+  - fichier: "01-chache.jpg"
+    description: "Vers les Peñas del Chache"
+  - fichier: "02-teguise.jpg"
+    description: "Teguise, l'ancienne capitale"
 pratique: |
   Déjeuner à Teguise au restaurant San Miguel, nuit à Tiagua, Myplace, avec dîner à la Pizzeria Casa Morelino (les meilleures pizzas de l’île prises à emporter car restaurant complet, pensez à réserver si vous voulez les déguster sur place)
 ---
