@@ -149,3 +149,10 @@ main.wrap { padding-block: 2rem 4rem; }
 }
 .pagination .titre { font-weight: inherit; }
 .pagination-haut .titre { display: none; }
+
+/* ---------- Carte du parcours (accueil) ---------- */
+.legende-carte { font-size: 0.85rem; color: var(--doux); margin: 0.5rem 0 0; }
+.numero-jour {
+  display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%;
+  border: 2px solid #fff; color: #fff; font: 700 13px/1 system-ui, sans-serif; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}

@@ -35,7 +35,7 @@ Puis, dans `content/etapes/jour-04/` :
   traces dans l'ordre de la journée : `gpx: ["matin.gpx", "apres-midi.gpx"]`.
   Elles sont affichées ensemble sur la carte et le profil ; distance et
   dénivelé sont additionnés, sans compter les trajets entre deux traces
-  (bus, voiture…), tracés en pointillés gris ;
+  (bus, voiture…) ;
 - déposer les photos (.jpg/.png, redimensionnées automatiquement) et les lister
   dans l'ordre voulu, avec leur description :
 

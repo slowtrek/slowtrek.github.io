@@ -22,12 +22,6 @@
     }).addTo(map);
 
     const traces = segments.map((s) => s.lat.map((la, i) => [la, s.lon[i]]));
-    // Trajets entre deux traces (bus, voiture…) : pointillés gris, non comptés
-    for (let i = 1; i < traces.length; i++) {
-      L.polyline([traces[i - 1].at(-1), traces[i][0]], {
-        color: '#6b7280', weight: 2, opacity: 0.8, dashArray: '4 8', interactive: false,
-      }).addTo(map);
-    }
     const ligne = L.polyline(traces, { color: '#c2410c', weight: 4, opacity: 0.9 }).addTo(map);
     map.fitBounds(ligne.getBounds(), { padding: [24, 24] });
     map.on('click', () => map.scrollWheelZoom.enable());

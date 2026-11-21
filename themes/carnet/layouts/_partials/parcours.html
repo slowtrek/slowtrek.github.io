@@ -1,0 +1,13 @@
+{{- /* Données de la carte du parcours (accueil) : les traces de chaque étape,
+     dans l'ordre des jours. Renvoie une liste vide s'il n'y a aucun GPX. */ -}}
+{{- $jours := slice -}}
+{{- with site.GetPage "/etapes" -}}
+  {{- range $p := .Pages.ByWeight -}}
+    {{- with partialCached "gpx-stats.html" $p $p.RelPermalink -}}
+      {{- $traces := slice -}}
+      {{- range .segments }}{{ $traces = $traces | append (dict "lat" .lat "lon" .lon) }}{{ end -}}
+      {{- $jours = $jours | append (dict "jour" $p.Weight "titre" $p.Title "url" $p.RelPermalink "traces" $traces) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $jours -}}

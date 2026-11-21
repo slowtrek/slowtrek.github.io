@@ -1,11 +1,32 @@
+{{ define "head" }}
+{{- if partialCached "parcours.html" . }}{{ partial "leaflet.html" "css" }}{{ end }}
+{{ end }}
+
 {{ define "main" }}
 <section class="intro">
   <h1>{{ .Title }}</h1>
   {{ partial "typo.html" .Content }}
 </section>
+{{- with partialCached "parcours.html" . }}
+<section>
+  <h2>Le parcours</h2>
+  {{ with site.GetPage "/etapes" }}{{ partial "totaux.html" .Pages.ByWeight }}{{ end }}
+  <div id="carte-parcours" class="carte" role="region" aria-label="Carte de tout le parcours"></div>
+  <p class="legende-carte">Une couleur par jour. Cliquez sur une trace pour ouvrir l'étape.</p>
+  <script type="application/json" id="parcours-data">{{ . | jsonify | safeJS }}</script>
+</section>
+{{- end }}
 <section>
   <h2>Les étapes</h2>
   {{ with site.GetPage "/etapes" }}{{ partial "liste-etapes.html" .Pages.ByWeight }}{{ end }}
 </section>
 {{ partial "pratique.html" . }}
+{{ end }}
+
+{{ define "scripts" }}
+{{- if partialCached "parcours.html" . }}
+{{ partial "leaflet.html" "js" }}
+{{- $js := resources.Get "js/parcours.js" | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+{{- end }}
 {{ end }}

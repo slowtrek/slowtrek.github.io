@@ -1,7 +1,6 @@
 {{ define "head" }}
 {{- if partialCached "gpx-stats.html" . .RelPermalink }}
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+{{ partial "leaflet.html" "css" }}
 {{- end }}
 {{ end }}
 
@@ -16,24 +15,27 @@
     {{- with .Description }}<p class="chapo">{{ . }}</p>{{ end }}
   </header>
 
-  {{- with $s }}
-  {{ partial "stats.html" . }}
-  <div id="carte" class="carte" role="region" aria-label="Carte du tracé"></div>
-  {{ partial "profil.html" . }}
-  <p class="telecharger">
-    {{- if eq (len .fichiers) 1 }}
-    <a href="{{ (index .fichiers 0).RelPermalink }}" download>Télécharger la trace GPX</a>
-    {{- else }}
-    Télécharger les traces GPX :
-    {{- range $i, $f := .fichiers }}{{ if $i }} ·{{ end }} <a href="{{ $f.RelPermalink }}" download>{{ $f.Name }}</a>{{ end }}
-    {{- end }}
-  </p>
-  <script type="application/json" id="trace-data">{{ dict "segments" .segments | jsonify | safeJS }}</script>
-  {{- end }}
-
   <div class="recit">{{ partial "typo.html" .Content }}</div>
 
   {{ partial "pratique.html" . }}
+
+  {{- with $s }}
+  <section class="parcours-jour">
+    <h2>Le parcours</h2>
+    {{ partial "stats.html" . }}
+    <div id="carte" class="carte" role="region" aria-label="Carte du tracé"></div>
+    {{ partial "profil.html" . }}
+    <p class="telecharger">
+      {{- if eq (len .fichiers) 1 }}
+      <a href="{{ (index .fichiers 0).RelPermalink }}" download>Télécharger la trace GPX</a>
+      {{- else }}
+      Télécharger les traces GPX :
+      {{- range $i, $f := .fichiers }}{{ if $i }} ·{{ end }} <a href="{{ $f.RelPermalink }}" download>{{ $f.Name }}</a>{{ end }}
+      {{- end }}
+    </p>
+    <script type="application/json" id="trace-data">{{ dict "segments" .segments | jsonify | safeJS }}</script>
+  </section>
+  {{- end }}
 
   {{- with partial "photos.html" . }}
   <section class="galerie">
@@ -69,8 +71,7 @@
 
 {{ define "scripts" }}
 {{- if partialCached "gpx-stats.html" . .RelPermalink }}
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+{{ partial "leaflet.html" "js" }}
 {{- end }}
 {{- $js := resources.Get "js/etape.js" | minify | fingerprint }}
 <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>

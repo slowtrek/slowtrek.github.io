@@ -1,6 +1,6 @@
 ---
-title: "La traversée de Lanzarote à pied, d'Órzola à Playa Blanca."
-description: "La traversée de Lanzarote à pied, d'Órzola à Playa Blanca."
+title: "Traversée de Lanzarote d'Órzola à Papagayo."
+description: "Traversée de Lanzarote d'Órzola à Papagayo."
 pratique: |
   - **Logements** : Réservez idéalement un mois à l’avance. Nous nous y sommes pris seulement 10 jours avant et nous avons trouvé, mais le choix était très limité dans notre budget de 60-90 € la nuit pour deux. L’île compte très peu d’auberges de jeunesse et peu de chambres d’hôtes. Les locations acceptant une seule nuit sont rares, la plupart imposant une durée minimale de séjour.
   - **Bus (appelés guaguas)** : Télécharger l'application IntercityBus Lanzarote. On a utilisé Google maps pour trouver facilement les lignes et arrêts. L’application de la compagnie sert surtout à vérifier les horaires de passage, souvent affichés en temps réel. C’est bien pratique en cas de retard, et ça évite de courir pour rien ! Bus type cars en super état mais pas si fréquent que ça, donc il faut un peu jongler avec les horaires pour éviter de perdre vite 45 min. Mieux vaut éviter la carte de bus. Elle est chargeable en argent (et non en nombre de trajets qui sont quasi tous à 1,40 euros) et qu’en multiple de 5 euros (en cash dans les bus) pour une réduction de 10% seulement. Il faut donc connaître à l’avance son nombre de trajets et espérer que le total tombe juste ! Le plus simple est donc de payer chaque trajet directement au chauffeur, en espèces ou par carte bancaire.
@@ -15,6 +15,6 @@ Nous avons trouvé peu de sites web pour nous aider à préparer ce projet. Alor
 
 Au départ, on comptait suivre en grande partie le GR131. Mais, un peu déçus par son tracé dans l’ensemble, on s’en est souvent écartés pour passer par presque tous les sites emblématiques de l’île, parfois avec l’aide des bus locaux ou de l’auto-stop (et, au pire, du taxi).
 
-Nous sommes deux quarantenaires bien entamés, amoureux de la nature mais pas sportifs réguliers ! Cette randonnée convient à des marcheurs motivés : environ 20 à 25 km par jour, mais avec peu de dénivelé. L’île n’a pas les pentes de Tenerife, ce qui la rend d’autant plus accessible pour ce genre de projet.
+Nous sommes deux quarantenaires bien entamés, amoureux de la nature mais pas sportifs réguliers ! Cette randonnée convient à des marcheurs motivés : environ 15 à 25 km par jour, mais avec peu de dénivelé. L’île n’a pas les pentes de Tenerife, ce qui la rend d’autant plus accessible pour ce genre de projet.
 
 Voilà donc notre parcours détaillé pour une découverte que nous avons réalisée fin octobre 2026 en une semaine. Les tracés GPX sont disponibles pour chaque jour.

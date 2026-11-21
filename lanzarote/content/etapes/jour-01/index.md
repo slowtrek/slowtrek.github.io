@@ -10,10 +10,12 @@ photos:
     description: "Le Jardin de Cactus."
   - fichier: "CuevadeLosVerdes.jpg"
     description: "Une des grandes cavités intérieures du tunnel de lave Cueva de Los Verdes."
-  - fichier: "cote.jpg"
-    description: "Sur le chemin longeant la côte entre Jameos del Agua et Punta Mujeres."
   - fichier: "entree_CuevadeLosVerdes.jpg"
     description: "Entrée du tunnel de lave Cueva de Los Verdes."
+  - fichier : "JameosdelAgua.jpg"
+    description : "Jameos del Agua : cavités volcaniques à ciel ouvert du tunnel de lave de l'Atlantide aménagées par l'artiste César Manrique. Son lac salé avec les fameux jameíto (Munidopsis polymorpha), petits crustacés blancs, aveugles et dépigmentés, endémiques de Lanzarote."
+  - fichier: "cote.jpg"
+    description: "Sur le chemin longeant la côte entre Jameos del Agua et Punta Mujeres."
 pratique: |
   Nuit à Punta Mujeres, Casa piscina, avec dîner au Ctro. Socio Cultural El Marinero
 ---

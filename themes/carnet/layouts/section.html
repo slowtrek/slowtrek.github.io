@@ -1,5 +1,6 @@
 {{ define "main" }}
 <h1>{{ .Title }}</h1>
 {{ .Content }}
+{{ partial "totaux.html" .Pages.ByWeight }}
 {{ partial "liste-etapes.html" .Pages.ByWeight }}
 {{ end }}

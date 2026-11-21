@@ -1,0 +1,13 @@
+{{- /* Totaux du voyage : nombre de jours, distance, D+, D-. Contexte : collection de pages d'étapes. */ -}}
+{{- $dist := 0.0 }}{{ $up := 0.0 }}{{ $down := 0.0 -}}
+{{- range . }}{{ with partialCached "gpx-stats.html" . .RelPermalink -}}
+  {{- $dist = add $dist .distance }}{{ $up = add $up .up }}{{ $down = add $down .down -}}
+{{- end }}{{ end -}}
+{{- with . }}
+<p class="totaux">
+  <strong>{{ len . }}</strong> jour{{ if gt (len .) 1 }}s{{ end }} ·
+  <strong>{{ lang.FormatNumber 1 (div $dist 1000) }}</strong> km ·
+  <strong>{{ lang.FormatNumber 0 $up }}</strong> m D+ ·
+  <strong>{{ lang.FormatNumber 0 $down }}</strong> m D−
+</p>
+{{- end }}
