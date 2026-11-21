@@ -4,7 +4,7 @@ weight: 6
 depart: "Yaiza"
 arrivee: "Playa Blanca"
 description: "Charco de los Clicos, Los Hervideros, Piscina natural Los Charcones"
-gpx: ""
+gpx: "yazia_playa_blanca.gpx"
 photos: []
 pratique: |
   Nuit à Playa Blanca, auberge de jeunesse Chill 12, avec dîner à 1926 Pizzeria Napoletana.

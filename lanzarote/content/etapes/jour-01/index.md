@@ -4,7 +4,7 @@ weight: 1
 depart: "Aéroport"
 arrivee: "Punta Mujeres"
 description: "Jardin Cactus, Cueva de los Verdes, Jameos del Agua"
-gpx: "trace.gpx"
+gpx: "cuervos_de_los_verdes_punta_mujeres.gpx"
 photos:
   - fichier: "01-orzola.jpg"
     description: "Órzola, au petit matin"

@@ -7,11 +7,18 @@
 {{- if eq $hi $lo }}{{ $hi = add $lo $step }}{{ end -}}
 {{- $total := math.Max .distance 1 -}}
 
-{{- $line := "" -}}
-{{- range $i, $e := .ele -}}
-  {{- $x := mul (div (index $.d $i) $total) $W -}}
-  {{- $y := sub $H (mul (div (sub $e $lo) (sub $hi $lo)) $H) -}}
-  {{- $line = printf "%s%.1f,%.1f " $line $x $y -}}
+{{- /* une courbe par trace GPX, placée sur l'axe des distances de la journée */ -}}
+{{- $courbes := slice -}}
+{{- range .segments -}}
+  {{- $seg := . -}}
+  {{- $line := "" -}}{{- $x0 := 0.0 -}}{{- $x1 := 0.0 -}}
+  {{- range $i, $e := $seg.ele -}}
+    {{- $x := mul (div (index $seg.d $i) $total) $W -}}
+    {{- $y := sub $H (mul (div (sub $e $lo) (sub $hi $lo)) $H) -}}
+    {{- if eq $i 0 }}{{ $x0 = $x }}{{ end }}{{ $x1 = $x -}}
+    {{- $line = printf "%s%.1f,%.1f " $line $x $y -}}
+  {{- end -}}
+  {{- $courbes = $courbes | append (dict "ligne" $line "x0" $x0 "x1" $x1) -}}
 {{- end -}}
 
 <figure class="profil" id="profil" data-lo="{{ $lo }}" data-hi="{{ $hi }}">
@@ -28,8 +35,10 @@
         {{- $gy := sub $H (mul (div (sub . $lo) (sub $hi $lo)) $H) }}
         <line class="grille" x1="0" x2="{{ $W }}" y1="{{ $gy }}" y2="{{ $gy }}"/>
         {{- end }}
-        <polygon class="aire" points="0,{{ $H }} {{ $line }}{{ $W }},{{ $H }}"/>
-        <polyline class="trace" points="{{ $line }}"/>
+        {{- range $courbes }}
+        <polygon class="aire" points="{{ printf "%.1f" .x0 }},{{ $H }} {{ .ligne }}{{ printf "%.1f" .x1 }},{{ $H }}"/>
+        <polyline class="trace" points="{{ .ligne }}"/>
+        {{- end }}
       </svg>
       <div class="profil-curseur" hidden></div>
       <div class="profil-info" hidden></div>

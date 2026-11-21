@@ -5,7 +5,11 @@
   // ---------- Carte & profil ----------
   const data = document.getElementById('trace-data');
   if (data && window.L) {
-    const t = JSON.parse(data.textContent);
+    // Une entrée par fichier GPX ; « t » met tous les points bout à bout
+    // (d = distance cumulée sur la journée) pour le survol carte <-> profil.
+    const segments = JSON.parse(data.textContent).segments;
+    const t = { lat: [], lon: [], ele: [], d: [] };
+    for (const s of segments) for (const k of Object.keys(t)) t[k].push(...s[k]);
     const pts = t.lat.map((la, i) => [la, t.lon[i]]);
     const total = t.d[t.d.length - 1] || 1;
 
@@ -17,7 +21,14 @@
         'Données : © contributeurs <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, SRTM',
     }).addTo(map);
 
-    const ligne = L.polyline(pts, { color: '#c2410c', weight: 4, opacity: 0.9 }).addTo(map);
+    const traces = segments.map((s) => s.lat.map((la, i) => [la, s.lon[i]]));
+    // Trajets entre deux traces (bus, voiture…) : pointillés gris, non comptés
+    for (let i = 1; i < traces.length; i++) {
+      L.polyline([traces[i - 1].at(-1), traces[i][0]], {
+        color: '#6b7280', weight: 2, opacity: 0.8, dashArray: '4 8', interactive: false,
+      }).addTo(map);
+    }
+    const ligne = L.polyline(traces, { color: '#c2410c', weight: 4, opacity: 0.9 }).addTo(map);
     map.fitBounds(ligne.getBounds(), { padding: [24, 24] });
     map.on('click', () => map.scrollWheelZoom.enable());
 
@@ -26,6 +37,14 @@
         .bindTooltip(titre).addTo(map);
     pastille(pts[0], '#15803d', 'Départ');
     pastille(pts[pts.length - 1], '#b91c1c', 'Arrivée');
+    // Début / fin des traces intermédiaires
+    traces.forEach((tr, i) => {
+      const petite = (ll, titre) => L.circleMarker(ll, {
+        radius: 5, color: '#fff', weight: 2, fillColor: '#6b7280', fillOpacity: 1,
+      }).bindTooltip(titre).addTo(map);
+      if (i > 0) petite(tr[0], `Début de la trace ${i + 1}`);
+      if (i < traces.length - 1) petite(tr.at(-1), `Fin de la trace ${i + 1}`);
+    });
 
     const curseurCarte = L.circleMarker(pts[0], {
       radius: 6, color: '#fff', weight: 2, fillColor: '#1d4ed8', fillOpacity: 1, interactive: false,

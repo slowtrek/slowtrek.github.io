@@ -4,7 +4,7 @@ weight: 3
 depart: "Haria"
 arrivee: "Tiagua"
 description: "Musée Lagomar, Playa de Famara"
-gpx: "trace.gpx"
+gpx: "haria_teguise_tiagua.gpx"
 photos:
   - fichier: "01-chache.jpg"
     description: "Vers les Peñas del Chache"

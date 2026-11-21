@@ -20,8 +20,15 @@
   {{ partial "stats.html" . }}
   <div id="carte" class="carte" role="region" aria-label="Carte du tracé"></div>
   {{ partial "profil.html" . }}
-  <p class="telecharger"><a href="{{ .gpx.RelPermalink }}" download>Télécharger la trace GPX</a></p>
-  <script type="application/json" id="trace-data">{{ dict "lat" .lat "lon" .lon "ele" .ele "d" .d | jsonify | safeJS }}</script>
+  <p class="telecharger">
+    {{- if eq (len .fichiers) 1 }}
+    <a href="{{ (index .fichiers 0).RelPermalink }}" download>Télécharger la trace GPX</a>
+    {{- else }}
+    Télécharger les traces GPX :
+    {{- range $i, $f := .fichiers }}{{ if $i }} ·{{ end }} <a href="{{ $f.RelPermalink }}" download>{{ $f.Name }}</a>{{ end }}
+    {{- end }}
+  </p>
+  <script type="application/json" id="trace-data">{{ dict "segments" .segments | jsonify | safeJS }}</script>
   {{- end }}
 
   <div class="recit">{{ partial "typo.html" .Content }}</div>
