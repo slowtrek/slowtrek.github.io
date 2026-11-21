@@ -1,10 +1,12 @@
 ---
 title: "{{ replace .File.ContentBaseName "-" " " | title }}"
-date: {{ .Date }}
+# date: {{ .Date }}   # facultatif : la date n'est affichée que si elle est renseignée
 weight: 0          # numéro du jour
 depart: ""
 arrivee: ""
-description: ""
+description: ""    # sites du jour, affichés sous le titre
+pratique: |
+  Nuit à …, dîner à …
 # couverture: "photo.jpg"   # photo de vignette (sinon : la première photo)
 # resources:
 #   - src: "photo.jpg"

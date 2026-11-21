@@ -1,23 +1,21 @@
 ---
-title: "Órzola → Haría"
-date: 2026-03-14
+title: "Aéroport → Punta Mujeres"
 weight: 1
-depart: "Órzola"
-arrivee: "Haría"
-description: "Première journée : la montée vers le Mirador del Río puis la descente sur Haría."
-couverture: "02-mirador.jpg"
-resources:
-  - src: "01-orzola.jpg"
-    title: "Órzola, au petit matin"
-  - src: "02-mirador.jpg"
-    title: "La Graciosa depuis le Mirador del Río"
-  - src: "03-haria.jpg"
-    title: "La vallée des mille palmiers"
+depart: "Aéroport"
+arrivee: "Punta Mujeres"
+description: "Jardin Cactus, Cueva de los Verdes, Jameos del Agua"
+pratique: |
+  Nuit à Punta Mujeres, Casa piscina, avec dîner au Ctro. Socio Cultural El Marinero
 ---
 
-Départ du petit port d'Órzola sous un ciel encore gris. Le sentier grimpe
-franchement vers le **Mirador del Río**, d'où l'on domine La Graciosa et
-l'archipel Chinijo.
+Vol arrivé en fin de matinée, nous avons directement commencé notre séjour par la visite de 3 sites incontournables. Bus depuis l’aéroport pour le Jardin Cactus avec un changement à Arrecife à la gare routière (Andenes Estacion de Guaguas, mais sûrement mieux de changer à Intercambiador Vuelta). Ce site est notre premier site créé par l’artiste César Manrique où on est directement mis dans l'ambiance du côté désert qui nous attend. Agencement magnifique de toutes sortes de cactus au sein d’une ancienne carrière qu’il a fait réaménager très joliment.
 
-L'après-midi, longue descente dans les cultures en terrasses jusqu'à
-**Haría**, oasis de palmiers où nous passons la nuit.
+Sur le parking du jardin, on trouve facilement un couple de jeunes irlandais habitués à sillonner l'île en vacances qui nous conduit en voiture jusqu'au site Cueva de los Verdes. Le parking du site du jardin de cactus est un lieu idéal pour rapidement trouver une voiture, ça évite de marcher les 6 km sur la route qui sépare ces 2 sites.
+
+Cueva de los Verdes est un immense tunnel de lave formé de l'éruption du volcan de la Corona que l'on parcourt sur plus d’1 km sur différents niveaux, qui vaut vraiment le détour. Les billets sont à prendre en ligne (possible au dernier moment). L’artiste Jesús Soto l’a superbement mis en valeur par la lumière. L’auditorium dans une des cavités de tunnel accueille des concerts qui doivent vraiment valoir le détour pour l’acoustique et l’originalité du site.
+
+Puis, après moins de 5 min à pied, on enchaîne par la visite du site en contrebas, Jameos del Agua, autre création de César Manrique qui impressionne d'harmonie art nature.
+
+Pour le retour sur nos pas sur Punta Mujeres, on vous conseille vraiment de rentrer à pied le long de la côte. Beauté simple, première marche facile pour se faire les jambes avant le lendemain. Et à l'arrivée à Punta Mujeres, la récompense : plusieurs piscines naturelles dont celle aménagée au niveau de la place principale, l'eau est bonne à ce moment de l'année (autour des 22 degrés).
+
+Autre solution qu'on n'a pas pu faire faute de logement trouvé : prendre le bus pour Orzola, quelques piscines naturelles également et une plage apparemment très sympa (El Caletón Blanco).

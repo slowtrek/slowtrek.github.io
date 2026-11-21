@@ -6,11 +6,12 @@ theme = "carnet"
 themesDir = "../themes"
 locale = "fr-FR"
 defaultContentLanguage = "fr"
-title = "Lanzatrip"
+title = "Lanzarote"
 timeZone = "Atlantic/Canary"
 disableKinds = ["taxonomy", "term"]
 
 [params]
+  contact = "slowtrek@duck.com"
   description = "Carnet de randonnée itinérante : la traversée de Lanzarote à pied."
   # Seuil (m) en dessous duquel les variations d'altitude sont ignorées (bruit GPS)
   seuilDenivele = 3

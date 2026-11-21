@@ -48,7 +48,6 @@ main.wrap { padding-block: 2rem 4rem; }
 .site-footer { border-top: 1px solid var(--trait); color: var(--doux); font-size: 0.875rem; padding-block: 1.5rem; }
 
 /* ---------- Accueil ---------- */
-.intro { max-width: 40rem; }
 .intro p { font-size: 1.125rem; }
 .totaux { color: var(--doux); }
 .totaux strong { color: var(--texte); }
@@ -99,7 +98,6 @@ main.wrap { padding-block: 2rem 4rem; }
 .profil-info.gauche { transform: translateX(calc(-100% - 1rem)); }
 
 .telecharger { font-size: 0.9rem; margin: 0.5rem 0 2rem; }
-.recit { max-width: 40rem; }
 
 /* ---------- Galerie ---------- */
 .grille-photos { display: grid; gap: 0.75rem; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); }
@@ -126,3 +124,21 @@ main.wrap { padding-block: 2rem 4rem; }
 .pagination a span { display: block; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); }
 .pagination .suiv { text-align: right; margin-left: auto; }
 .pagination a:hover { color: var(--accent); }
+
+/* ---------- Infos pratiques ---------- */
+.pratique {
+  margin: 2rem 0; padding: 1rem 1.25rem;
+  background: var(--surface); border: 1px solid var(--trait); border-left: 4px solid var(--accent); border-radius: var(--rayon);
+}
+.pratique h2 { margin: 0 0 0.4rem; font-size: 1.1rem; }
+.pratique p { margin: 0.3rem 0; }
+
+/* ---------- Justification (écrans assez larges seulement) ---------- */
+@media (min-width: 700px) {
+  .intro p, .recit p, .pratique p {
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphenate-limit-chars: 7 3 3;   /* pas de coupure dans les mots courts */
+  }
+}

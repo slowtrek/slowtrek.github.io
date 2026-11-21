@@ -10,7 +10,7 @@
 {{- $s := partialCached "gpx-stats.html" . .RelPermalink }}
 <article class="etape">
   <header class="etape-entete">
-    <p class="jour">Jour {{ .Weight }} · <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format ":date_full" }}</time></p>
+    <p class="jour">Jour {{ .Weight }}{{ if not .Date.IsZero }} · <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format ":date_full" }}</time>{{ end }}</p>
     <h1>{{ .Title }}</h1>
     {{- with .Description }}<p class="chapo">{{ . }}</p>{{ end }}
   </header>
@@ -24,6 +24,13 @@
   {{- end }}
 
   <div class="recit">{{ .Content }}</div>
+
+  {{- with .Params.pratique }}
+  <aside class="pratique">
+    <h2>Infos pratiques</h2>
+    {{ . | markdownify }}
+  </aside>
+  {{- end }}
 
   {{- with .Resources.ByType "image" }}
   <section class="galerie">

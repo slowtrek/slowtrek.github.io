@@ -23,7 +23,7 @@
       <div class="sans-photo"></div>
       {{- end }}
       <div class="carte-texte">
-        <p class="jour">Jour {{ .Weight }} · <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format ":date_medium" }}</time></p>
+        <p class="jour">Jour {{ .Weight }}{{ if not .Date.IsZero }} · <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format ":date_medium" }}</time>{{ end }}</p>
         <h3>{{ .Title }}</h3>
         {{- with $s }}
         <p class="mini-stats">{{ lang.FormatNumber 1 (div .distance 1000) }} km · ↗ {{ lang.FormatNumber 0 .up }} m · ↘ {{ lang.FormatNumber 0 .down }} m</p>

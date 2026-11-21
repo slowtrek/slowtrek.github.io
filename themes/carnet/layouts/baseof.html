@@ -22,7 +22,10 @@
     {{- block "main" . }}{{ end }}
   </main>
   <footer class="site-footer">
-    <div class="wrap">{{ site.Title }} · carnet de randonnée</div>
+    <div class="wrap">
+      {{ site.Title }} · carnet de randonnée
+      {{- with site.Params.contact }} · Contact : <a href="mailto:{{ . }}">{{ . }}</a>{{ end }}
+    </div>
   </footer>
   {{- block "scripts" . }}{{ end }}
 </body>
