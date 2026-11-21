@@ -5,6 +5,7 @@ depart: "Yaiza"
 arrivee: "Yaiza"
 description: "Parc National de Timanfaya"
 gpx: ""
+position: [28.9566, -13.7656]   # Yaiza : repère sur la carte du parcours (jour sans trace GPX)
 photos: []
 pratique: |
   Déjeuner à la cafétéria Yaiza (tout simple mais ambiance locale sympa), nuit à Yaiza, hôtel La Casona de Yaiza, avec dîner au restaurant de l’hôtel (nous avons hésité avec La Bodega de Santiago, mais fermé le dimanche soir)

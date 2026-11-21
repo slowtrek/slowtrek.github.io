@@ -9,6 +9,7 @@ pratique: |
   Nuit à …, dîner à …
 gpx: "trace.gpx"   # fichier GPX déposé dans le dossier de l'étape
 # gpx: ["matin.gpx", "apres-midi.gpx"]   # ou plusieurs, dans l'ordre de la journée
+# position: [28.96, -13.55]   # jour sans GPX : repère sur la carte du parcours
 photos:            # dans l'ordre d'affichage de la galerie
   - fichier: "photo-1.jpg"
     description: "Texte affiché sous la photo"

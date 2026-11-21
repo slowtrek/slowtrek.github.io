@@ -18,8 +18,27 @@
 
   const limites = L.latLngBounds([]);
 
+  // Numéro du jour, dans une pastille (pleine : jour avec trace ; claire : sans trace)
+  const numero = (ll, j, couleur, sansTrace) => L.marker(ll, {
+    icon: L.divIcon({
+      className: '',
+      html: `<span class="numero-jour${sansTrace ? ' sans-trace' : ''}" style="--c:${couleur}">${j.jour}</span>`,
+      iconSize: [26, 26],
+      // repère sans trace décalé au-dessus du point, pour ne pas masquer une autre pastille
+      iconAnchor: sansTrace ? [13, 34] : [13, 13],
+    }),
+    title: `Jour ${j.jour} · ${j.titre}${sansTrace ? ' (sans trace GPX)' : ''}`,
+    keyboard: true,
+  }).on('click', () => { location.href = j.url; }).addTo(map);
+
   jours.forEach((j, n) => {
     const couleur = couleurs[n % couleurs.length];
+    if (j.position) {
+      L.circleMarker(j.position, { radius: 3, color: couleur, weight: 2, fillOpacity: 1, interactive: false }).addTo(map);
+      numero(j.position, j, couleur, true);
+      limites.extend(j.position);
+      return;
+    }
     const traces = j.traces.map((t) => t.lat.map((la, i) => [la, t.lon[i]]));
     const titre = `Jour ${j.jour} · ${j.titre}`;
 
@@ -31,17 +50,7 @@
       .addTo(map);
     limites.extend(ligne.getBounds());
 
-    // Numéro du jour au point de départ
-    L.marker(traces[0][0], {
-      icon: L.divIcon({
-        className: '',
-        html: `<span class="numero-jour" style="background:${couleur}">${j.jour}</span>`,
-        iconSize: [26, 26],
-        iconAnchor: [13, 13],
-      }),
-      title: titre,
-      keyboard: true,
-    }).on('click', () => { location.href = j.url; }).addTo(map);
+    numero(traces[0][0], j, couleur, false);
   });
 
   map.fitBounds(limites, { padding: [24, 24] });

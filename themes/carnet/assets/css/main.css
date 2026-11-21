@@ -155,4 +155,6 @@ main.wrap { padding-block: 2rem 4rem; }
 .numero-jour {
   display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%;
   border: 2px solid #fff; color: #fff; font: 700 13px/1 system-ui, sans-serif; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+  background: var(--c);
 }
+.numero-jour.sans-trace { background: #fff; color: var(--c); border: 2px dashed var(--c); }

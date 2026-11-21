@@ -1,5 +1,5 @@
 {{- /* Données de la carte du parcours (accueil) : les traces de chaque étape,
-     dans l'ordre des jours. Renvoie une liste vide s'il n'y a aucun GPX. */ -}}
+     dans l'ordre des jours (ou un repère « position » pour les jours sans GPX). Renvoie une liste vide s'il n'y a aucun GPX. */ -}}
 {{- $jours := slice -}}
 {{- with site.GetPage "/etapes" -}}
   {{- range $p := .Pages.ByWeight -}}
@@ -7,6 +7,11 @@
       {{- $traces := slice -}}
       {{- range .segments }}{{ $traces = $traces | append (dict "lat" .lat "lon" .lon) }}{{ end -}}
       {{- $jours = $jours | append (dict "jour" $p.Weight "titre" $p.Title "url" $p.RelPermalink "traces" $traces) -}}
+    {{- else -}}
+      {{- /* jour sans GPX : repère simple si « position: [lat, lon] » est renseigné */ -}}
+      {{- with $p.Params.position -}}
+        {{- $jours = $jours | append (dict "jour" $p.Weight "titre" $p.Title "url" $p.RelPermalink "position" .) -}}
+      {{- end -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}

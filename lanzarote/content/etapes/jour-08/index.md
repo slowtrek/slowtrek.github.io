@@ -4,6 +4,7 @@ weight: 8
 depart: "Arrecife"
 arrivee: "Aéroport"
 gpx: ""
+position: [28.9630, -13.5477]   # Arrecife : repère sur la carte du parcours (jour sans trace GPX)
 photos: []
 ---
 
