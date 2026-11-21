@@ -17,7 +17,7 @@
 
   <div class="recit">{{ partial "typo.html" .Content }}</div>
 
-  {{ partial "pratique.html" . }}
+  {{ partial "pratique.html" (dict "page" . "titre" "Logement et restaurants") }}
 
   {{- with $s }}
   <section class="parcours-jour">

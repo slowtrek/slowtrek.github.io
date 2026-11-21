@@ -20,7 +20,7 @@
   <h2>Les étapes</h2>
   {{ with site.GetPage "/etapes" }}{{ partial "liste-etapes.html" .Pages.ByWeight }}{{ end }}
 </section>
-{{ partial "pratique.html" . }}
+{{ partial "pratique.html" (dict "page" . "titre" "Infos pratiques") }}
 {{ end }}
 
 {{ define "scripts" }}
