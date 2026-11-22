@@ -20,7 +20,7 @@ pratique: |
   Nuit à Punta Mujeres, Casa piscina, avec dîner au Ctro. Socio Cultural El Marinero
 ---
 
-Vol arrivé en fin de matinée, nous avons directement commencé notre séjour par la visite de 3 sites incontournables. Bus depuis l’aéroport pour le Jardin de Cactus avec un changement à Arrecife à la gare routière (Andenes Estación de Guaguas, mais sûrement mieux de changer à Intercambiador Vuelta). Ce site est notre premier site créé par l’artiste César Manrique où on est directement mis dans l'ambiance du côté désert qui nous attend. Agencement magnifique de toutes sortes de cactus au sein d’une ancienne carrière qu’il a fait réaménager très joliment.
+Vol arrivé en fin de matinée, nous avons directement commencé notre séjour par la visite de 3 sites incontournables. Bus depuis l’aéroport pour le Jardin de Cactus avec un changement à Arrecife à la gare routière (Andenes Estación de Guaguas, mais sûrement mieux de changer à Intercambiador Vuelta). Ce lieu est notre toute première découverte signée César Manrique ; il nous plonge immédiatement dans l’ambiance désertique qui nous attend sur l'île. Agencement magnifique de toutes sortes de cactus au sein d’une ancienne carrière qu’il a fait réaménager très joliment.
 
 Sur le parking du jardin, on trouve facilement un couple de jeunes Irlandais habitués à sillonner l'île en vacances qui nous conduit en voiture jusqu'au site Cueva de los Verdes. Le parking du site du jardin de cactus est un lieu idéal pour rapidement trouver une voiture, ça évite de marcher les 6 km sur la route qui séparent ces 2 sites.
 
