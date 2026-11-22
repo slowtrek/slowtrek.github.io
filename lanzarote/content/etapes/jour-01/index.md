@@ -22,9 +22,9 @@ pratique: |
 
 Vol arrivé en fin de matinée, nous avons directement commencé notre séjour par la visite de 3 sites incontournables. Bus depuis l’aéroport pour le Jardin de Cactus avec un changement à Arrecife à la gare routière (Andenes Estación de Guaguas, mais sûrement mieux de changer à Intercambiador Vuelta). Ce site est notre premier site créé par l’artiste César Manrique où on est directement mis dans l'ambiance du côté désert qui nous attend. Agencement magnifique de toutes sortes de cactus au sein d’une ancienne carrière qu’il a fait réaménager très joliment.
 
-Sur le parking du jardin, on trouve facilement un couple de jeunes Irlandais habitués à sillonner l'île en vacances qui nous conduit en voiture jusqu'au site Cueva de los Verdes. Le parking du site du jardin de cactus est un lieu idéal pour rapidement trouver une voiture, ça évite de marcher les 6 km sur la route qui sépare ces 2 sites.
+Sur le parking du jardin, on trouve facilement un couple de jeunes Irlandais habitués à sillonner l'île en vacances qui nous conduit en voiture jusqu'au site Cueva de los Verdes. Le parking du site du jardin de cactus est un lieu idéal pour rapidement trouver une voiture, ça évite de marcher les 6 km sur la route qui séparent ces 2 sites.
 
-Cueva de los Verdes est un immense tunnel de lave formé de l'éruption du volcan de la Corona que l'on parcourt sur plus d’1 km sur différents niveaux, qui vaut vraiment le détour. Les billets sont à prendre en ligne (possible au dernier moment). L’artiste Jesús Soto l’a superbement mis en valeur par la lumière. L’auditorium dans une des cavités du tunnel accueille des concerts qui doivent vraiment valoir le détour pour l’acoustique et l’originalité du site.
+Cueva de los Verdes est un immense tunnel de lave formé par l'éruption du volcan de la Corona que l'on parcourt sur plus d’1 km sur différents niveaux, qui vaut vraiment le détour. Les billets sont à prendre en ligne (possible au dernier moment). L’artiste Jesús Soto l’a superbement mis en valeur par la lumière. L’auditorium dans une des cavités du tunnel accueille des concerts qui doivent vraiment valoir le détour pour l’acoustique et l’originalité du site.
 
 Puis, après moins de 5 min à pied, on enchaîne par la visite du site en contrebas, Jameos del Agua, autre création de César Manrique qui impressionne d'harmonie art nature.
 
