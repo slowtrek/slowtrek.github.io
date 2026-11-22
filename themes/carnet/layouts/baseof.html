@@ -24,6 +24,7 @@
     <div class="wrap">
       {{ site.Title }}
       {{- with site.Params.contact }} · Contact : <a href="mailto:{{ . }}">{{ . }}</a>{{ end }}
+      {{- with site.Params.youtube }} · <a href="{{ . }}" rel="me noopener" target="_blank">Notre chaîne YouTube</a>{{ end }}
       {{- if or site.Params.googleAnalytics site.Params.googleTagManager }} · <a href="#consentement" data-gerer-cookies>Cookies</a>{{ end }}
     </div>
   </footer>

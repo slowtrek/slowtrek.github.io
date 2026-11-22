@@ -81,6 +81,7 @@
 
   {{- /* Données structurées */ -}}
   {{- $editeur := dict "@type" "Organization" "name" "Slowtrek" "url" (site.Home.Permalink) -}}
+  {{- with site.Params.youtube }}{{ $editeur = merge $editeur (dict "sameAs" (slice .)) }}{{ end -}}
   {{- $ld := dict -}}
   {{- if .IsHome -}}
     {{- $etapes := slice -}}

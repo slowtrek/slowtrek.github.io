@@ -12,6 +12,7 @@ disableKinds = ["taxonomy", "term"]
 
 [params]
   contact = "slowtrek@duck.com"
+  youtube = "https://www.youtube.com/@SlowTrek-r7v"
   description = "Carnet de randonnée itinérante : la traversée de Lanzarote à pied."
   # Référencement : lieu, code région ISO 3166-2 et mots-clés communs à toutes les pages
   lieu = "Lanzarote, îles Canaries, Espagne"
