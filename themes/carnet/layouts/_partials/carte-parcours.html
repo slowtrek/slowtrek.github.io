@@ -1,0 +1,6 @@
+{{- /* Carte de tout le parcours (accueil, page des étapes). Nécessite leaflet + js/parcours.js (voir carte-parcours-scripts). */ -}}
+{{- with partialCached "parcours.html" . }}
+  <div id="carte-parcours" class="carte" role="region" aria-label="Carte de tout le parcours"></div>
+  <p class="legende-carte">Une couleur par jour ; pastille claire : jour sans randonnée. Cliquez sur une trace ou un numéro pour ouvrir l'étape.</p>
+  <script type="application/json" id="parcours-data">{{ . | jsonify | safeJS }}</script>
+{{- end }}

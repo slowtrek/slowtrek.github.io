@@ -11,9 +11,7 @@
 <section>
   <h2>Le parcours</h2>
   {{ with site.GetPage "/etapes" }}{{ partial "totaux.html" .Pages.ByWeight }}{{ end }}
-  <div id="carte-parcours" class="carte" role="region" aria-label="Carte de tout le parcours"></div>
-  <p class="legende-carte">Une couleur par jour ; pastille claire : jour sans randonnée. Cliquez sur une trace ou un numéro pour ouvrir l'étape.</p>
-  <script type="application/json" id="parcours-data">{{ . | jsonify | safeJS }}</script>
+  {{ partial "carte-parcours.html" $ }}
 </section>
 {{- end }}
 <section>
@@ -24,9 +22,5 @@
 {{ end }}
 
 {{ define "scripts" }}
-{{- if partialCached "parcours.html" . }}
-{{ partial "leaflet.html" "js" }}
-{{- $js := resources.Get "js/parcours.js" | minify | fingerprint }}
-<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
-{{- end }}
+{{ partial "carte-parcours-scripts.html" . }}
 {{ end }}

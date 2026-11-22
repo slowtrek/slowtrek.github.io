@@ -1,0 +1,5 @@
+{{- if partialCached "parcours.html" . }}
+{{ partial "leaflet.html" "js" }}
+{{- $js := resources.Get "js/parcours.js" | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+{{- end }}

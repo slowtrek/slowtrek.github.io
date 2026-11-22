@@ -1,6 +1,15 @@
+{{ define "head" }}
+{{- if partialCached "parcours.html" . }}{{ partial "leaflet.html" "css" }}{{ end }}
+{{ end }}
+
 {{ define "main" }}
 <h1>{{ .Title }}</h1>
 {{ .Content }}
 {{ partial "totaux.html" .Pages.ByWeight }}
+{{ partial "carte-parcours.html" . }}
 {{ partial "liste-etapes.html" .Pages.ByWeight }}
+{{ end }}
+
+{{ define "scripts" }}
+{{ partial "carte-parcours-scripts.html" . }}
 {{ end }}
