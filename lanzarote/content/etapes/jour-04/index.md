@@ -6,16 +6,14 @@ arrivee: "Yaiza"
 description: "Caldera Blanca, Caldera de Los Cuervos, Bodegas Stratvs et Rubicon"
 gpx: ["mancha_blanca_caldeira_blanca.gpx", "cuervos_geria.gpx"]
 photos:
-  - fichier: "Tiagua_eglise.jpg"
-    description: "Église de Tiagua"
   - fichier: "coulee.jpg"
-    description: "Au pied du cratère Caldera Blanca : coulée de lave de 1730-1736 traversée depuis le parking."
-  - fichier: "Jour4_Chemin vers Caldeira Blanca _ au milieu des coulées de lave de 1730-1736.jpg"
-    description: "Sur le chemin de la Caldera Blanca, entre les coulées de lave."
-  - fichier: "Jour4_Caldeira Blanca depuis le belvédère.jpg"
-    description: "Caldera Blanca depuis le belvédère"
-  - fichier: "Jour4_sur le chemin entre Volcan el Cuervo et la route LZ-30.jpg"
-    description: "Sur le chemin entre le volcan Los Cuervos et la route LZ-30"
+    description: "Sur le chemin vers la Caldera Blanca, au milieu des coulées de lave de 1730-1736."
+  - fichier: "piedCaldeira.jpg"
+    description: "Au pied du cratère Caldera Blanca."
+  - fichier: "CaldeiraBlanca.jpg"
+    description: "Caldera Blanca : vue sur toute la caldera depuis le belvédère."
+  - fichier: "entrelesvolcans.jpg"
+    description: "Sur le chemin entre le volcan El Cuervo et la route LZ-30."
 pratique: |
   Déjeuner à La Geria, la Bodega Stratvs, nuit à Yaiza, hôtel La Casona de Yaiza, avec dîner au restaurant de l’hôtel (cadre sympa et bonne cuisine)
 ---

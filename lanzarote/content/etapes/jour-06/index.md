@@ -5,7 +5,21 @@ depart: "Yaiza"
 arrivee: "Playa Blanca"
 description: "Charco de los Clicos, Los Hervideros, Piscina natural Los Charcones"
 gpx: "yazia_playa_blanca.gpx"
-photos: []
+photos:
+  - fichier: "lacvert.jpg"
+    description: "Le lac vert Charco de los Clicos, El Golfo."
+  - fichier: "ElGolfo.jpg"
+    description: "Village d’El Golfo."
+  - fichier: "Hervideros.jpg"
+    description: "Cavité sur le site de Los Hervideros."
+  - fichier: "cote.jpg"
+    description: "Arche naturelle : rencontre entre le basalte et les vagues de l’océan."
+  - fichier: "route.jpg"
+    description: "Seuls au monde sur la route LZ-703 longeant la côte au milieu des coulées de lave."
+  - fichier: "LosCharcones.jpg"
+    description: "Piscine naturelle de Los Charcones et ses couleurs bleu turquoise."
+  - fichier: "chemin.jpg"
+    description: "Chemin entre la côte et Playa Blanca."
 pratique: |
   Nuit à Playa Blanca, auberge de jeunesse Chill 12, avec dîner à 1926 Pizzeria Napoletana.
 ---

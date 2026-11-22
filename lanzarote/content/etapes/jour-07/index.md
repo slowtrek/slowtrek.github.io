@@ -5,7 +5,15 @@ depart: "Playa Blanca"
 arrivee: "Arrecife"
 description: "Playa de Papagayo, Fundación César Manrique de Tahíche, Charco de San Ginés (quartier Arrecife)"
 gpx: "playa_blanca_papagayo.gpx"
-photos: []
+photos:
+  - fichier: "papagayo.jpg"
+    description: "Playa de Papagayo avant l’arrivée des touristes."
+  - fichier: "CesarManrique.jpg"
+    description: "Fundación César Manrique : entrée de la maison musée, Tahíche."
+  - fichier: "TaroTahiche.jpg"
+    description: "Fundación César Manrique : salon dans une des bulles volcaniques utilisées par César Manrique pour construire sa maison, le Taro de Tahíche."
+  - fichier: "SanGines.jpg"
+    description: "Quartier animé de Charco de San Ginés le soir, Arrecife."
 pratique: |
   Nuit à Arrecife, hôtel Lancelot, avec dîner à La Miñoca Cafe.
 ---

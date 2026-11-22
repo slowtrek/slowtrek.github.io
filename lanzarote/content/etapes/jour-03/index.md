@@ -12,6 +12,8 @@ photos:
     description: "Sur le chemin, vue derrière nous sur les falaises avec en arrière-plan l’île de La Graciosa."
   - fichier: "Lagomar.jpg"
     description: "Musée Lagomar, Nazaret, Las Palmas."
+  - fichier: "Tiagua_eglise.jpg"
+    description: "Tiagua, église Ermita del Socorro de Tiagua."
 pratique: |
   Déjeuner à Teguise au restaurant San Miguel, nuit à Tiagua, Myplace, avec dîner à la Pizzeria Casa Morelino (les meilleures pizzas de l’île prises à emporter car restaurant complet, pensez à réserver si vous voulez les déguster sur place)
 ---

@@ -9,7 +9,7 @@ photos:
   - fichier: "debutrando.jpg"
     description: "Début de la randonnée près d’Órzola. Vue sur les monts que l’on va gravir."
   - fichier: "MiradordelRio.jpg"
-    description : "Mirador del Río."
+    description: "Mirador del Río."
   - fichier: "Graciosa.jpg"
     description: "Vue sur l’île de La Graciosa depuis le chemin en haut des falaises."
   - fichier: "falaises.jpg"

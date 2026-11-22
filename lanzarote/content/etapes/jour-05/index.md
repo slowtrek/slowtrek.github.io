@@ -6,7 +6,19 @@ arrivee: "Yaiza"
 description: "Parc national de Timanfaya"
 gpx: ""
 position: [28.9566, -13.7656]   # Yaiza : repère sur la carte du parcours (jour sans trace GPX)
-photos: []
+photos:
+  - fichier: "Timanfaya.jpg"
+    description: "Parc de Timanfaya : vue d’ensemble depuis le bus."
+  - fichier: "Timanfaya_basalte.jpg"
+    description: "Parc de Timanfaya : passage du bus au sein des coulées de lave basaltique."
+  - fichier: "RutadelosVolcanes.jpg"
+    description: "Parc de Timanfaya : vue depuis le bus sur les cratères et la route empruntée, Ruta de los Volcanes."
+  - fichier: "tranquilite.jpg"
+    description: "Parc de Timanfaya, zone de la vallée de la Tranquillité."
+  - fichier: "Yaiza.jpg"
+    description: "Plaza de los Remedios, Yaiza."
+  - fichier: "aloevera.jpg"
+    description: "Plantation d’aloe vera au centre d'interprétation de l’aloe vera, Yaiza."
 pratique: |
   Déjeuner à la cafétéria Yaiza (tout simple mais ambiance locale sympa), nuit à Yaiza, hôtel La Casona de Yaiza, avec dîner au restaurant de l’hôtel (nous avons hésité avec La Bodega de Santiago, mais fermée le dimanche soir)
 ---
