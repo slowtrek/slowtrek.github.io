@@ -158,3 +158,21 @@ main.wrap { padding-block: 2rem 4rem; }
   background: var(--c);
 }
 .numero-jour.sans-trace { background: #fff; color: var(--c); border: 2px dashed var(--c); }
+
+/* ---------- Bandeau de consentement cookies ---------- */
+.consentement {
+  position: fixed; z-index: 2000; left: 1rem; right: 1rem; bottom: 1rem;
+  max-width: 40rem; margin-inline: auto; padding: 1rem 1.25rem;
+  background: var(--surface); color: var(--texte);
+  border: 1px solid var(--trait); border-radius: var(--rayon);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+  font-size: 0.9rem;
+}
+.consentement p { margin: 0 0 0.75rem; }
+.consentement-boutons { display: flex; gap: 0.75rem; justify-content: flex-end; flex-wrap: wrap; }
+.consentement-boutons button {
+  font: inherit; font-weight: 600; cursor: pointer;
+  padding: 0.5rem 1.25rem; border-radius: 999px;
+  border: 1px solid var(--accent); background: var(--accent); color: #fff;
+}
+@media (prefers-color-scheme: dark) { .consentement-boutons button { color: #1b1917; } }

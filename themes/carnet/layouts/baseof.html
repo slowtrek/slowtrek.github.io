@@ -2,8 +2,7 @@
 <html lang="{{ site.Language.Locale | default "fr" }}">
 <head>
   <meta charset="utf-8">
-  {{- partial "gtm.html" "head" }}
-  {{- partial "analytics.html" . }}
+  {{- partial "consentement.html" "head" }}
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
   {{ partial "seo.html" . }}
@@ -12,7 +11,6 @@
   {{- block "head" . }}{{ end }}
 </head>
 <body>
-  {{- partial "gtm.html" "body" }}
   <header class="site-header">
     <div class="wrap">
       <a class="marque" href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a>
@@ -26,8 +24,10 @@
     <div class="wrap">
       {{ site.Title }}
       {{- with site.Params.contact }} · Contact : <a href="mailto:{{ . }}">{{ . }}</a>{{ end }}
+      {{- if or site.Params.googleAnalytics site.Params.googleTagManager }} · <a href="#consentement" data-gerer-cookies>Cookies</a>{{ end }}
     </div>
   </footer>
+  {{- partial "consentement.html" "body" }}
   {{- block "scripts" . }}{{ end }}
 </body>
 </html>

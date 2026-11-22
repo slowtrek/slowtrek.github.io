@@ -1,0 +1,79 @@
+{{- /*
+  Mesure d'audience soumise au consentement (RGPD / recommandations CNIL).
+  Google Tag Manager (param « googleTagManager ») et Google Analytics 4 (param « googleAnalytics »)
+  ne sont chargés qu'après « Accepter ». Consent Mode v2 : tout est refusé par défaut.
+  Le choix est mémorisé 13 mois (acceptation) ou 6 mois (refus) dans le navigateur.
+  Sur le serveur local, le bandeau s'affiche mais aucun script Google n'est chargé.
+  Contexte : "head" ou "body".
+*/ -}}
+{{- $gtm := site.Params.googleTagManager -}}
+{{- $ga := site.Params.googleAnalytics -}}
+{{- if or $gtm $ga -}}
+{{- if eq . "head" }}
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied'});
+  window.consentement = (() => {
+    const CLE = 'consentement-cookies', JOUR = 864e5;
+    let charge = false;
+    const charger = () => {
+      if (charge) return; charge = true;
+      gtag('consent', 'update', {analytics_storage: 'granted'});
+      {{- if hugo.IsProduction }}
+      const script = (src) => { const s = document.createElement('script'); s.async = true; s.src = src; document.head.appendChild(s); };
+      {{- with $ga }}
+      gtag('js', new Date()); gtag('config', {{ . }});
+      script('https://www.googletagmanager.com/gtag/js?id=' + {{ . }});
+      {{- end }}
+      {{- with $gtm }}
+      dataLayer.push({'gtm.start': Date.now(), event: 'gtm.js'});
+      script('https://www.googletagmanager.com/gtm.js?id=' + {{ . }});
+      {{- end }}
+      {{- end }}
+    };
+    const lire = () => {
+      try {
+        const c = JSON.parse(localStorage.getItem(CLE));
+        const duree = (c.choix === 'oui' ? 395 : 182) * JOUR;
+        return Date.now() - c.date < duree ? c.choix : null;
+      } catch (e) { return null; }
+    };
+    const choix = lire();
+    if (choix === 'oui') charger();
+    return {
+      choix,
+      enregistrer(c) {
+        try { localStorage.setItem(CLE, JSON.stringify({choix: c, date: Date.now()})); } catch (e) {}
+        if (c === 'oui') charger();
+        else if (charge) location.reload(); // retrait du consentement : on décharge les scripts
+      },
+    };
+  })();
+  </script>
+{{- else }}
+  <div class="consentement" id="consentement" role="dialog" aria-live="polite" aria-labelledby="consentement-titre" hidden>
+    <p><strong id="consentement-titre">Cookies de mesure d'audience</strong><br>
+    Avec votre accord, nous utilisons Google Analytics pour savoir combien de personnes lisent ce carnet et quelles pages les intéressent. Aucun cookie n'est déposé si vous refusez, et vous pouvez changer d'avis à tout moment via le lien « Cookies » en bas de page.</p>
+    <div class="consentement-boutons">
+      <button type="button" data-choix="non">Refuser</button>
+      <button type="button" data-choix="oui">Accepter</button>
+    </div>
+  </div>
+  <script>
+  (() => {
+    const b = document.getElementById('consentement');
+    const ouvrir = () => { b.hidden = false; };
+    b.addEventListener('click', (e) => {
+      const c = e.target.dataset.choix;
+      if (!c) return;
+      b.hidden = true;
+      window.consentement.enregistrer(c);
+    });
+    document.querySelectorAll('[data-gerer-cookies]').forEach((a) =>
+      a.addEventListener('click', (e) => { e.preventDefault(); ouvrir(); }));
+    if (!window.consentement.choix) ouvrir();
+  })();
+  </script>
+{{- end }}
+{{- end -}}
