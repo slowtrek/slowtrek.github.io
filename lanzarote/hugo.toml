@@ -17,6 +17,8 @@ disableKinds = ["taxonomy", "term"]
   lieu = "Lanzarote, îles Canaries, Espagne"
   geoRegion = "ES-CN"
   # Code fourni par Google Search Console (méthode « balise HTML »), facultatif
+  # Identifiant Google Tag Manager (actif seulement sur le site publié)
+  googleTagManager = "GTM-N9HDPXB4"
   googleVerification = "YQAqXpHSooSqrd5ik8jRGonSXdAHNhIWq1ZJ7J4E0hU"
   motsCles = ["Lanzarote", "randonnée", "trek", "randonnée itinérante", "îles Canaries", "à pied", "carnet de voyage", "GPX", "César Manrique", "volcans"]
   # Seuil (m) en dessous duquel les variations d'altitude sont ignorées (bruit GPS)
