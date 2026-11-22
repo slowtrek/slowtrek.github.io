@@ -17,4 +17,4 @@ Au départ, on comptait suivre en grande partie le GR131. Mais, un peu déçus p
 
 Nous sommes deux quarantenaires bien entamés, amoureux de la nature mais pas sportifs réguliers ! Cette randonnée convient à des marcheurs motivés : environ 15 à 25 km par jour, mais avec peu de dénivelé. L’île n’a pas les pentes de Tenerife, ce qui la rend d’autant plus accessible pour ce genre de projet.
 
-Voilà donc notre parcours détaillé pour une découverte que nous avons réalisée fin octobre 2026 en une semaine. Les tracés GPX sont disponibles pour chaque jour de randonnée.
+ Voilà donc notre parcours détaillé d'une semaine, effectué fin octobre 2026 (et tout aussi idéal au printemps), avec le descriptif de chaque journée et les tracés GPX des randonnées.
