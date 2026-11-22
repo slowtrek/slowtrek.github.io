@@ -53,7 +53,7 @@ jobs:
           BASE_URL: ${{ steps.pages.outputs.base_url }}
         run: |
           mkdir -p _site
-          cp index.html _site/
+          cp index.html robots.txt _site/
           for cfg in */hugo.toml; do
             trek="$(dirname "$cfg")"
             [ "$trek" = themes ] && continue
@@ -62,7 +62,10 @@ jobs:
               --baseURL "${BASE_URL}/${trek}/" \
               --destination "$GITHUB_WORKSPACE/_site/$trek"
             echo "::endgroup::"
+            sitemaps+="  <sitemap><loc>${BASE_URL}/${trek}/sitemap.xml</loc></sitemap>"$'\n'
           done
+          # Index des sitemaps de tous les treks (référencé par robots.txt)
+          printf '<?xml version="1.0" encoding="utf-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n%s</sitemapindex>\n' "$sitemaps" > _site/sitemap.xml
 
       - name: Publier l'artefact
         uses: actions/upload-pages-artifact@v4

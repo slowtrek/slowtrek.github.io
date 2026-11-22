@@ -13,6 +13,12 @@ disableKinds = ["taxonomy", "term"]
 [params]
   contact = "slowtrek@duck.com"
   description = "Carnet de randonnée itinérante : la traversée de Lanzarote à pied."
+  # Référencement : lieu, code région ISO 3166-2 et mots-clés communs à toutes les pages
+  lieu = "Lanzarote, îles Canaries, Espagne"
+  geoRegion = "ES-CN"
+  # Code fourni par Google Search Console (méthode « balise HTML »), facultatif
+  # googleVerification = ""
+  motsCles = ["Lanzarote", "randonnée", "trek", "randonnée itinérante", "îles Canaries", "à pied", "carnet de voyage", "GPX", "César Manrique", "volcans"]
   # Seuil (m) en dessous duquel les variations d'altitude sont ignorées (bruit GPS)
   seuilDenivele = 3
   # Largeur (m) de la moyenne glissante appliquée aux altitudes avant le calcul du D+/D-

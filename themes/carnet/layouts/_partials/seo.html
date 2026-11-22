@@ -1,0 +1,100 @@
+{{- /* Balises de référencement : description, canonique, Open Graph, Twitter, données structurées JSON-LD. */ -}}
+{{- $etape := and .IsPage .Weight -}}
+
+{{- /* Titre */ -}}
+{{- $titre := .Title -}}
+{{- if $etape }}{{ $titre = printf "Jour %d · %s" .Weight .Title }}{{ end -}}
+{{- if .IsHome }}{{ $titre = site.Title }}{{ end -}}
+
+{{- /* Description : pour une étape, « Titre du site, jour N : titre. Sites… » puis début du récit, coupé à ~160 caractères */ -}}
+{{- $desc := .Description | default site.Params.description -}}
+{{- if $etape -}}
+  {{- $desc = printf "%s, jour %d : %s." site.Title .Weight .Title -}}
+  {{- with .Description }}{{ $desc = printf "%s %s." $desc . }}{{ end -}}
+  {{- $desc = printf "%s %s" $desc (.Summary | plainify | htmlUnescape) -}}
+{{- else if and .IsHome .Content -}}
+  {{- $desc = printf "%s %s" $desc (.Summary | plainify | htmlUnescape) -}}
+{{- end -}}
+{{- $desc = $desc | replaceRE `\s+` " " | strings.TrimSpace | truncate 160 "…" | htmlUnescape -}}
+
+{{- /* Image de partage : couverture de la page, sinon celle de la première étape */ -}}
+{{- $img := partial "couverture.html" . -}}
+{{- if not $img -}}
+  {{- with site.GetPage "/etapes" }}{{ range .Pages.ByWeight }}{{ if not $img }}{{ $img = partial "couverture.html" . }}{{ end }}{{ end }}{{ end -}}
+{{- end -}}
+{{- $partage := false -}}
+{{- with $img }}{{ $partage = (. | images.Filter images.AutoOrient).Fill "1200x630 jpg q80" }}{{ end -}}
+
+{{- /* Mots-clés : ceux du site + ceux de la page + lieux de l'étape */ -}}
+{{- $mots := slice -}}
+{{- with site.Params.motsCles }}{{ $mots = $mots | append . }}{{ end -}}
+{{- with .Params.motsCles }}{{ $mots = $mots | append . }}{{ end -}}
+{{- if $etape }}{{ with .Description }}{{ range split . ", " }}{{ $mots = $mots | append (strings.TrimSpace .) }}{{ end }}{{ end }}{{ end -}}
+
+  <meta name="description" content="{{ $desc }}">
+  {{- with $mots | uniq }}
+  <meta name="keywords" content="{{ delimit . ", " }}">
+  {{- end }}
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="{{ .Permalink }}">
+  {{- with site.Params.googleVerification }}
+  <meta name="google-site-verification" content="{{ . }}">
+  {{- end }}
+  {{- with site.Params.auteur }}
+  <meta name="author" content="{{ . }}">
+  {{- end }}
+
+  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+  <meta property="og:site_name" content="{{ site.Title }}">
+  <meta property="og:locale" content="{{ replace (site.Language.Locale | default "fr-FR") "-" "_" }}">
+  <meta property="og:title" content="{{ $titre }}">
+  <meta property="og:description" content="{{ $desc }}">
+  <meta property="og:url" content="{{ .Permalink }}">
+  {{- with $partage }}
+  <meta property="og:image" content="{{ .Permalink }}">
+  <meta property="og:image:width" content="{{ .Width }}">
+  <meta property="og:image:height" content="{{ .Height }}">
+  {{- end }}
+  <meta name="twitter:card" content="{{ if $partage }}summary_large_image{{ else }}summary{{ end }}">
+  <meta name="twitter:title" content="{{ $titre }}">
+  <meta name="twitter:description" content="{{ $desc }}">
+  {{- with $partage }}
+  <meta name="twitter:image" content="{{ .Permalink }}">
+  {{- end }}
+
+  {{- /* Position géographique de l'étape (premier point GPX, ou « position ») */ -}}
+  {{- $geo := false -}}
+  {{- if $etape -}}
+    {{- with partialCached "gpx-stats.html" . .RelPermalink }}{{ with index .segments 0 }}{{ $geo = slice (index .lat 0) (index .lon 0) }}{{ end }}{{ end -}}
+    {{- with .Params.position }}{{ if not $geo }}{{ $geo = . }}{{ end }}{{ end -}}
+  {{- end }}
+  {{- with $geo }}
+  {{- with site.Params.geoRegion }}
+  <meta name="geo.region" content="{{ . }}">
+  {{- end }}
+  {{- with site.Params.lieu }}
+  <meta name="geo.placename" content="{{ . }}">
+  {{- end }}
+  <meta name="geo.position" content="{{ index . 0 }};{{ index . 1 }}">
+  <meta name="ICBM" content="{{ index . 0 }}, {{ index . 1 }}">
+  {{- end }}
+
+  {{- /* Données structurées */ -}}
+  {{- $editeur := dict "@type" "Organization" "name" "Slowtrek" "url" (site.Home.Permalink) -}}
+  {{- $ld := dict -}}
+  {{- if .IsHome -}}
+    {{- $etapes := slice -}}
+    {{- with site.GetPage "/etapes" }}{{ range $i, $p := .Pages.ByWeight }}
+      {{- $etapes = $etapes | append (dict "@type" "ListItem" "position" (add $i 1) "url" $p.Permalink "name" (printf "Jour %d · %s" $p.Weight $p.Title)) -}}
+    {{- end }}{{ end -}}
+    {{- $ld = dict "@context" "https://schema.org" "@type" "WebSite" "name" site.Title "description" $desc "url" .Permalink "inLanguage" "fr-FR" "publisher" $editeur -}}
+    {{- with $etapes }}{{ $ld = merge $ld (dict "mainEntity" (dict "@type" "ItemList" "name" "Les étapes" "itemListElement" .)) }}{{ end -}}
+  {{- else if .IsPage -}}
+    {{- $ld = dict "@context" "https://schema.org" "@type" "Article" "headline" $titre "description" $desc "url" .Permalink "mainEntityOfPage" .Permalink "inLanguage" "fr-FR" "author" $editeur "publisher" $editeur "isPartOf" (dict "@type" "WebSite" "name" site.Title "url" site.Home.Permalink) -}}
+    {{- with $partage }}{{ $ld = merge $ld (dict "image" .Permalink) }}{{ end -}}
+    {{- if not .Lastmod.IsZero }}{{ $ld = merge $ld (dict "dateModified" (.Lastmod.Format "2006-01-02")) }}{{ end -}}
+    {{- with $geo }}{{ $ld = merge $ld (dict "contentLocation" (dict "@type" "Place" "name" (site.Params.lieu | default site.Title) "geo" (dict "@type" "GeoCoordinates" "latitude" (index . 0) "longitude" (index . 1)))) }}{{ end -}}
+  {{- end }}
+  {{- with $ld }}
+  <script type="application/ld+json">{{ . | jsonify | safeJS }}</script>
+  {{- end }}
